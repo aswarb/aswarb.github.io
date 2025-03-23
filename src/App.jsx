@@ -1,14 +1,16 @@
-import { useState } from 'react'
 import './App.css'
-import {NavIcon} from '@/navIcon.jsx'
+import { NavIcon } from '@/navIcon.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-    </>
-  )
+    return (
+	<div className="navRail"> 
+		<span> Item1 </span>
+		<span> Item2 </span>
+		<span> Item3</span>
+		<span> Item4</span>
+		<span> Item5</span>
+	</div>
+)
 }
 
 export default App
