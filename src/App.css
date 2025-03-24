@@ -1,25 +1,50 @@
 #root {
-    width:100vw; 
-    height:100vh;
+    width: 100vw;
+    height: 100vh;
 }
 
 body {
-    width:100vw; height:100vh;
-    padding:0px; margin:0px;
+    width: 100vw;
+    height: 100vh;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.navDest {
+    display: block;
+    text-decoration: none;
+}
+
+.navDest.active {
+    background-color: black;
+}
+
+.pageGrid {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1fr 15fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'navbar content';
+}
+
+.contentBox {
+    grid-area: content;
+    background-color: red;
 }
 
 .navRail {
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    width:70px;
+    grid-area: navbar;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: grey;
-    height:100%
 }
 
 .navRail > * {
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:30px;
-    margin-bottom:30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
