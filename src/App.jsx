@@ -17,6 +17,7 @@ function NavBar() {
     const location = useLocation()
 
     return (
+	<>
         <div className="navRail">
             <Link to="/" className={`navDest ${location.pathname === '/' ? 'active' : ''}`}>
                 Home
@@ -46,6 +47,7 @@ function NavBar() {
                 Contact
             </Link>
         </div>
+	</>
     )
 }
 
@@ -56,6 +58,11 @@ function Content({ children }) {
 function App() {
     return (
         <Router>
+	    <div className="titleBar"> 
+		<div className="namePlate" style={{right:0 + 'px'}}> <div> Andrew Swarbrick </div>
+	<div> Developer Portfolio</div>
+	</div> 
+	</div>
             <div className="pageGrid">
                 <NavBar />
                 <Content>

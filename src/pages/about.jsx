@@ -1,6 +1,6 @@
 
 export function About() {
-    return (<div> about </div>)
+    return (<div className="content"> about </div>)
 }
 
 

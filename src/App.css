@@ -24,18 +24,37 @@ body {
     display: grid;
     width: 100%;
     height: 100%;
-    grid-template-columns: 1fr 15fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: 'navbar content';
+    grid-template-columns: 1fr 11fr;
+    grid-template-rows: fit-content 1fr;
+    grid-template-areas:'titlebar titlebar'
+    'navbar content'
+    ;
+}
+
+.namePlate { 
+    font-size: 16pt;
+    position:absolute;
+    width:fit-content;
 }
 
 .contentBox {
     grid-area: content;
-    background-color: red;
+}
+
+.content {
+    width:100%;
+    height:100%;
+    display:flex;
+}
+
+.titleBar {
+    grid-area: titleBar;
 }
 
 .navRail {
     grid-area: navbar;
+    font-size: 14pt;
+    color:black;
     display: flex;
     flex-direction: column;
     justify-content: center;

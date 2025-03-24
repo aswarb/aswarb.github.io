@@ -1,6 +1,6 @@
 
 export function Projects() {
-    return (<div> projects </div>)
+    return (<div className="content"> projects </div>)
 }
 
 
