@@ -1,12 +1,8 @@
 .light {
-    --background-0: rgb(255,255,255)
-    --background-1: rgb(250,250,250)
-    --background-2: rgb(245,245,245)
-    --background-3: rgb(240,240,240)
-    --background-4: rgb(235,235,235)
+    --background-0: rgb(255, 255, 255) --background-1: rgb(250, 250, 250)
+        --background-2: rgb(245, 245, 245) --background-3: rgb(240, 240, 240)
+        --background-4: rgb(235, 235, 235) --background-faded: rgb(220 227 233);
 
-    --background-faded: rgb(220 227 233);
-
-    --on-background:rgb(23 28 31);
-    --on-background-faded:rgb(64 72 77);
+    --on-background: rgb(23 28 31);
+    --on-background-faded: rgb(64 72 77);
 }

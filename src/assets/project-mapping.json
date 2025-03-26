@@ -1,0 +1,16 @@
+{
+    "projects": [
+        {
+            "title": "AsciiVid",
+            "thumbnail": "thumbnail1.jpg",
+            "shortDescription": "shortdesc1",
+            "fullContentLink": "https://www.google.com"
+        },
+        {
+            "title": "secondProject",
+            "thumbnail": "thumbnail2.jpg",
+            "shortDescription": "shortdesc2",
+            "fullContentLink": "https://www.google.com"
+        }
+    ]
+}

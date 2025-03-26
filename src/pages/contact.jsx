@@ -1,6 +1,3 @@
-
 export function Contact() {
-    return (<div className="content"> contact </div>)
+    return <div className="content"> contact </div>
 }
-
-

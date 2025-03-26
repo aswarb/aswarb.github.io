@@ -25,16 +25,17 @@ body {
     width: 100%;
     height: 100%;
     grid-template-columns: 1fr 11fr;
-    grid-template-rows: fit-content 1fr;
-    grid-template-areas:'titlebar titlebar'
-    'navbar content'
-    ;
+    grid-template-rows: fit-content(100%) 1fr;
+    grid-template-areas:
+        'titlebar titlebar'
+        'navbar content';
 }
 
-.namePlate { 
+.namePlate {
     font-size: 16pt;
-    position:absolute;
-    width:fit-content;
+    position: relative;
+    width: fit-content;
+    margin-left: auto;
 }
 
 .contentBox {
@@ -42,9 +43,8 @@ body {
 }
 
 .content {
-    width:100%;
-    height:100%;
-    display:flex;
+    width: 100%;
+    height: 100%;
 }
 
 .titleBar {
@@ -54,7 +54,7 @@ body {
 .navRail {
     grid-area: navbar;
     font-size: 14pt;
-    color:black;
+    color: black;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -66,4 +66,18 @@ body {
     margin-right: auto;
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+.card {
+    width: 14em;
+    height: 16em;
+    border: 1px solid black;
+    text-wrap: wrap;
+    border-radius: 1em;
+    display: inline-block;
+    margin: 10px;
+}
+.card > * {
+    width: 100%;
+    display: block;
 }

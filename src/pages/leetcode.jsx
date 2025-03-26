@@ -1,6 +1,3 @@
-
 export function Leetcode() {
-    return (<div className="content"> Leetcode </div>)
+    return <div className="content"> Leetcode </div>
 }
-
-
