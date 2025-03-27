@@ -1,4 +1,6 @@
 import * as projectMap from '!assets/project-mapping.json'
+import { useFetch } from '!hooks/useFetch.jsx'
+
 import React, { useCallback, createContext, useContext, useState, useEffect } from 'react'
 
 const projectImportUrl = createContext(null)
@@ -58,15 +60,8 @@ function ProjectCards(projects) {
 function ProjectFullPage({ url }) {
     const context = useContext(projectImportUrl)
 
-    const [result, setResult] = useState({})
-    useEffect(() => {
-        const loadProject = async () => {
-            await fetch(url)
-                .then((response) => response.json())
-                .then((data) => setResult(data))
-        }
-        loadProject()
-    }, [url])
+    const result = useFetch(url)
+
     return (
         <div onClick={() => context.setValue(null)}>
             {url} {JSON.stringify(result)}
