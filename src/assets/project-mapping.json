@@ -3,8 +3,8 @@
         {
             "title": "AsciiVid",
             "thumbnail": "thumbnail1.jpg",
-            "shortDescription": "shortdesc1",
-            "fullContentLink": "https://www.google.com"
+            "shortDescription": "Raster video + images to ASCII art. \n Written in Python",
+            "fullContentLink": "/pages/asciivid.json"
         },
         {
             "title": "secondProject",

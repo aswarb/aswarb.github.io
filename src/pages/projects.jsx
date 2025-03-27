@@ -1,5 +1,5 @@
 import * as projectMap from '!assets/project-mapping.json'
-import React, { useCallback, createContext, useContext, useState } from 'react'
+import React, { useCallback, createContext, useContext, useState, useEffect } from 'react'
 
 const projectImportUrl = createContext(null)
 
@@ -38,20 +38,6 @@ function ContextProvider({ children }) {
     )
 }
 
-function ProjectPage(url) {
-    const context = useContext(projectImportUrl)
-    return (
-        <div
-            onClick={() => {
-                context.setValue(null)
-            }}
-        >
-            {' '}
-            {url}{' '}
-        </div>
-    )
-}
-
 function ProjectCards(projects) {
     let count = 0
     return (
@@ -69,10 +55,23 @@ function ProjectCards(projects) {
     )
 }
 
-function ProjectFullPage(url) {
+function ProjectFullPage({ url }) {
     const context = useContext(projectImportUrl)
 
-    return <div onClick={() => context.setValue(null)}> {url.url} </div>
+    const [result, setResult] = useState({})
+    useEffect(() => {
+        const loadProject = async () => {
+            await fetch(url)
+                .then((response) => response.json())
+                .then((data) => setResult(data))
+        }
+        loadProject()
+    }, [url])
+    return (
+        <div onClick={() => context.setValue(null)}>
+            {url} {JSON.stringify(result)}
+        </div>
+    )
 }
 
 function PageContent() {
@@ -86,7 +85,7 @@ function PageContent() {
                 <ProjectCards projects={projects} />
             ) : (
                 <ProjectFullPage url={context.value} />
-            )}{' '}
+            )}
         </div>
     )
 }
