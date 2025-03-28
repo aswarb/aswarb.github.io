@@ -1,7 +1,9 @@
 import * as projectMap from '!assets/project-mapping.json'
 import { useFetch } from '!hooks/useFetch.jsx'
 
-import React, { useCallback, createContext, useContext, useState, useEffect } from 'react'
+import React, { useCallback, createContext, useContext, useState } from 'react'
+
+import DOMPurify from 'dompurify';
 
 const projectImportUrl = createContext(null)
 
@@ -63,9 +65,11 @@ function ProjectFullPage({ url }) {
     const result = useFetch(url)
 
     return (
+	<>
         <div onClick={() => context.setValue(null)}>
-            {url} {JSON.stringify(result)}
-        </div>
+            Back         </div>
+<div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(result.content) }} /></>
+
     )
 }
 
