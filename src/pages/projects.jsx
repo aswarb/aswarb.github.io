@@ -3,7 +3,7 @@ import { useFetch } from '!hooks/useFetch.jsx'
 
 import React, { useCallback, createContext, useContext, useState } from 'react'
 
-import DOMPurify from 'dompurify';
+import DOMPurify from 'dompurify'
 
 const projectImportUrl = createContext(null)
 
@@ -65,11 +65,10 @@ function ProjectFullPage({ url }) {
     const result = useFetch(url)
 
     return (
-	<>
-        <div onClick={() => context.setValue(null)}>
-            Back         </div>
-<div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(result.content) }} /></>
-
+        <>
+            <div onClick={() => context.setValue(null)}>Back </div>
+            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(result.content) }} />
+        </>
     )
 }
 
