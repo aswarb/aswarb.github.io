@@ -17,33 +17,45 @@ function NavBar() {
     return (
         <>
             <div className="navRail">
-                <Link to="/" className={`navDest ${location.pathname === '/' ? 'active' : ''}`}>
-                    Home
-                </Link>
-                <Link
-                    to="/about"
-                    className={`navDest ${location.pathname === '/about' ? 'active' : ''}`}
-                >
-                    About
-                </Link>
-                <Link
-                    to="/projects"
-                    className={`navDest ${location.pathname === '/projects' ? 'active' : ''}`}
-                >
-                    Projects
-                </Link>
-                <Link
-                    to="/leetcode"
-                    className={`navDest ${location.pathname === '/leetcode' ? 'active' : ''}`}
-                >
-                    LeetCode
-                </Link>
-                <Link
-                    to="/contact"
-                    className={`navDest ${location.pathname === '/contact' ? 'active' : ''}`}
-                >
-                    Contact
-                </Link>
+                <div className="navSection">
+                    <Link to="/" className={`navDest ${location.pathname === '/' ? 'active' : ''}`}>
+                        Home
+                    </Link>
+                    <Link
+                        to="/about"
+                        className={`navDest ${location.pathname === '/about' ? 'active' : ''}`}
+                    >
+                        About
+                    </Link>
+                    <Link
+                        to="/projects"
+                        className={`navDest ${location.pathname === '/projects' ? 'active' : ''}`}
+                    >
+                        Projects
+                    </Link>
+                    <Link
+                        to="/leetcode"
+                        className={`navDest ${location.pathname === '/leetcode' ? 'active' : ''}`}
+                    >
+                        LeetCode
+                    </Link>
+                    <Link
+                        to="/contact"
+                        className={`navDest ${location.pathname === '/contact' ? 'active' : ''}`}
+                    >
+                        Contact
+                    </Link>
+                </div>
+                <div className="navSection">
+                    <div>
+                        <a href="https://www.linkedin.com/in/andrew-swarbrick-a04314261/">
+                            LinkedIn
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://github.com/aswarb">Github</a>
+                    </div>
+                </div>
             </div>
         </>
     )
@@ -56,14 +68,16 @@ function Content({ children }) {
 function App() {
     return (
         <Router>
-            <div className="titleBar">
-                <div className="namePlate">
-                    {' '}
-                    <div> Andrew Swarbrick </div>
-                    <div> Developer Portfolio</div>
-                </div>
-            </div>
             <div className="pageGrid">
+                <div className="emptyDiv"> </div>
+                <div className="titlebar">
+                    <div className="namePlate">
+                        {' '}
+                        <div> Andrew Swarbrick </div>
+                        <div> Developer Portfolio</div>
+                    </div>
+                </div>
+
                 <NavBar />
                 <Content>
                     <Routes>

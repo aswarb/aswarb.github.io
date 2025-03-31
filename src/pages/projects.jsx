@@ -61,13 +61,24 @@ function ProjectCards(projects) {
 
 function ProjectFullPage({ url }) {
     const context = useContext(projectImportUrl)
-
+    console.log(url)
     const result = useFetch(url)
+    const paragraphs = JSON.stringify(result.paragraphs)
+    let content = ''
+    console.log(paragraphs)
+
+    result.paragraphs?.forEach((element) => {
+        content += '<p>' + element + '</p>'
+    })
 
     return (
         <>
-            <div onClick={() => context.setValue(null)}>Back </div>
-            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(result.content) }} />
+            <div className="titleBar">
+                <div className="backButton" onClick={() => context.setValue(null)}>
+                    Back{' '}
+                </div>
+            </div>
+            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }} />
         </>
     )
 }
@@ -78,7 +89,7 @@ function PageContent() {
     const projects = projectMap.projects
     console.log(projects)
     return (
-        <div>
+        <div className="cardContainer">
             {context.value === null ? (
                 <ProjectCards projects={projects} />
             ) : (
@@ -92,10 +103,7 @@ export function Projects() {
     return (
         <div className="content">
             <ContextProvider>
-                <div>
-                    <h3>projects</h3>
-                    <PageContent />
-                </div>
+                <PageContent />
             </ContextProvider>
         </div>
     )
