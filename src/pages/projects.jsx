@@ -5,6 +5,8 @@ import React, { useCallback, createContext, useContext, useState } from 'react'
 
 import DOMPurify from 'dompurify'
 
+import BackIcon from '!assets/icons/arrow_back_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg?react'  
+
 const projectImportUrl = createContext(null)
 
 function ProjectCard({ thumbnail, title, shortDescription, link }) {
@@ -63,20 +65,20 @@ function ProjectFullPage({ url }) {
     const context = useContext(projectImportUrl)
     console.log(url)
     const result = useFetch(url)
-    const paragraphs = JSON.stringify(result.paragraphs)
-    let content = ''
+    const paragraphs = JSON.stringify(result.paragraphs);
+    let content = "";
     console.log(paragraphs)
 
-    result.paragraphs?.forEach((element) => {
-        content += '<p>' + element + '</p>'
-    })
+    result.paragraphs?.forEach((element) => {content += "<p>"+ element + "</p>"})
 
     return (
         <>
             <div className="titleBar">
                 <div className="backButton" onClick={() => context.setValue(null)}>
-                    Back{' '}
+                    Back{' '} 
+		    <BackIcon className="svgIcon" />
                 </div>
+		<hr/>
             </div>
             <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }} />
         </>

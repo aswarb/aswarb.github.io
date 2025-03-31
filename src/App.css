@@ -11,6 +11,10 @@ body {
     overflow: hidden;
 }
 
+hr {
+    border: 0.1px solid black;
+}
+
 .navDest {
     display: block;
     text-decoration: none;
@@ -35,6 +39,10 @@ body {
     grid-area: empty;
     width: 100%;
     height: 100%;
+}
+
+.svgIcon {
+    fill:black;
 }
 
 .pageGrid {
