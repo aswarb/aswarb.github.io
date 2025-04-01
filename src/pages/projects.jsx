@@ -7,6 +7,7 @@ import React, { useCallback, createContext, useContext, useState } from 'react'
 import DOMPurify from 'dompurify'
 
 import BackIcon from '!assets/icons/arrow_back_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg?react'
+import BoltIcon from '!assets/icons/bolt_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg?react'
 
 const projectImportUrl = createContext(null)
 
@@ -62,21 +63,39 @@ function ProjectCards(projects) {
     )
 }
 
+function ProjectQuicknotes({ noteArray }) {
+    console.log(typeof noteArray)
+    const notes = noteArray?.map((element, index) => {
+        return (
+            <li className="note" key={index}>
+                {element}
+            </li>
+        )
+    })
+
+    return (
+	<div className="quicknotes-container">
+	<div className="title">  <BoltIcon className="svgIcon" height="1em" width="1em" style={{fill:"yellow"}}/> Quicknotes </div>
+        <div className="quicknotes">
+            <ul>{notes}</ul>
+        </div></div>
+    )
+}
+
 function ProjectFullPage({ url }) {
     const context = useContext(projectImportUrl)
-    console.log(url)
     const result = useFetch(url)
     let content = result.sections?.map((element, index) => {
         return ProjectSection(index, element.type, element.classes, element.altText, element.value)
     })
-    console.log(content)
     return (
         <>
-            <div style={{ borderRadius: 5 + 'px', border: 1 + 'px solid black' }}>
+            <div className="project-titlebar">
                 <div className="backButton" onClick={() => context.setValue(null)}>
-                    <BackIcon className="svgIcon" />
+                    <BackIcon className="svgIcon" height="2em" width="2em" />
                 </div>
             </div>
+            <ProjectQuicknotes noteArray={result?.quicknotes} />
             {content}
         </>
     )

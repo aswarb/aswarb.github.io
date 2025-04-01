@@ -7,17 +7,18 @@ export function ProjectSection(index, type, classes, altText, value) {
         }
         case 'yt-embed':
             {
-                const newValue = value.replace('watch?v=', 'embed/')
+                const newValue = value
+                    ? value.replace('youtube.com/watch?v=', 'youtube-nocookie.com/embed/')
+                    : ''
                 retVal = (
                     <iframe
                         width="560"
                         height="315"
                         src={newValue}
                         title="YouTube video player"
-                        frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        allowfullscreen
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
                     ></iframe>
                 )
             }

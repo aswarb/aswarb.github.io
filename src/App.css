@@ -42,7 +42,22 @@ hr {
 }
 
 .svgIcon {
+    margin-top:5px;
     fill: black;
+    height: fit-content;
+}
+
+.backButton {
+    cursor: pointer;
+}
+.backButton:hover {
+    background: darkred;
+    filter: brightness(80%);
+}
+
+.project-titlebar {
+    height: fit-content;
+    border-bottom: 1px solid black;
 }
 
 .pageGrid {
@@ -79,8 +94,7 @@ hr {
 
 .cardContainer {
     height: fit-content;
-    min-height:100%;
-
+    min-height: 100%;
     background: red;
 }
 
@@ -144,8 +158,53 @@ hr {
 }
 
 .yt-embed {
-    margin-left:auto;
-    margin-right:auto;
-    width:fit-content;
-    height:fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 1em;
+}
+
+.yt-embed > * {
+    border-radius: 1em;
+}
+.quicknotes-container {
+    background: lightgrey;
+    margin:5px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    width: 95%;
+       border-radius: 0.37em;
+
+
+}
+.quicknotes {
+    height: fit-content;
+    padding: 5px;
+    column-count: 2;
+    column-gap: 20px;
+}
+
+.quicknotes > ul {
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    list-style-position: inside;
+    list-style-type: disc;
+}
+
+.quicknotes > ul .note {
+    color: black;
+    width: 49%;
+    font-size: 14pt;
+}
+
+.quicknotes-container > .title {
+    width:100%;
+    border-bottom:1px solid black;
+    padding-left:10px;
 }
