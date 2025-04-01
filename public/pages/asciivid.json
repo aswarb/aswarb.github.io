@@ -1,10 +1,41 @@
 {
     "pageName": "AsciiVid",
-    "paragraphs": [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quis risus lorem. In suscipit dui lacinia odio euismod, eget vulputate tortor scelerisque. Nulla facilisis est at metus tincidunt laoreet. Vestibulum scelerisque elit quis odio fringilla, eu commodo libero tempus. Aliquam erat volutpat. Cras tincidunt libero neque. Mauris tincidunt maximus placerat. Suspendisse risus dolor, tempor in est et, porta pulvinar arcu. Curabitur odio justo, fermentum in enim nec, iaculis fringilla tellus.",
-        "In vitae laoreet erat. Integer quis tortor hendrerit erat elementum pretium. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas erat velit, blandit sit amet interdum vitae, varius sit amet lacus. Vestibulum viverra at ipsum quis vulputate. Suspendisse potenti. In hendrerit, nulla vitae blandit vehicula, tortor velit viverra dolor, mollis blandit libero justo in nunc. Donec tincidunt enim sit amet eleifend congue. Cras suscipit maximus augue, in hendrerit lectus auctor ac. Sed pretium, est sit amet maximus venenatis, urna est pellentesque enim, sed venenatis odio ex vel est. In euismod congue sapien, vitae rutrum tortor sagittis ut. Cras tincidunt posuere ex vel egestas.",
-        "Donec eu ullamcorper ex. Ut mollis metus ac dictum venenatis. Ut a orci vitae nisl dictum semper. Nulla sit amet rhoncus justo, tempus fringilla mi. Mauris aliquet enim in risus volutpat hendrerit. Donec at nibh faucibus, faucibus turpis non, bibendum dui. Nunc ultrices ex sed mauris laoreet, id rutrum ligula fringilla. Morbi tristique lacus quis nibh ultrices, eget malesuada nunc bibendum. Nunc porttitor lorem non est cursus, ultrices facilisis elit viverra. Ut et lorem tortor. Vivamus dignissim massa non est dignissim vulputate vitae at mauris. Morbi velit sapien, luctus id orci et, tempor ornare lorem.",
-        "Quisque dignissim lacus id orci lobortis elementum. Cras eu eros nisl. Quisque a molestie lectus. Integer leo felis, auctor quis ipsum non, tincidunt condimentum tortor. Pellentesque velit sem, sollicitudin non venenatis vel, condimentum ut urna. Cras ut mattis arcu, nec porttitor leo. Nam at lectus metus. Nullam non suscipit ipsum, nec consequat lacus. Vestibulum finibus, metus at sagittis tincidunt, augue eros sodales justo, vel egestas lacus nibh a libero.",
-        "Quisque ut felis nulla. Nulla elementum ultricies sollicitudin. Quisque tincidunt faucibus sem quis egestas. Phasellus sit amet magna mollis, sollicitudin purus sit amet, ultrices tellus. Nulla facilisi. Donec lorem lacus, sollicitudin vel justo in, luctus rhoncus nisi. Nam vestibulum ante id hendrerit gravida. Aliquam sit amet arcu luctus, dignissim lectus molestie, finibus magna. Mauris eu ligula sit amet turpis volutpat tempor nec ac mauris. Vestibulum fringilla dolor quis congue varius. Quisque posuere maximus est in aliquet. Donec pulvinar nunc non tortor consequat interdum quis vitae nulla."
+    "sections": [
+        {
+            "type": "plaintext",
+            "classes": [""],
+            "altText": "",
+            "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quis risus lorem. In suscipit dui lacinia odio euismod, eget vulputate tortor scelerisque. Nulla facilisis est at metus tincidunt laoreet. Vestibulum scelerisque elit quis odio fringilla, eu commodo libero tempus. Aliquam erat volutpat. Cras tincidunt libero neque. Mauris tincidunt maximus placerat. Suspendisse risus dolor, tempor in est et, porta pulvinar arcu. Curabitur odio justo, fermentum in enim nec, iaculis fringilla tellus."
+        },
+        {
+            "type": "plaintext",
+            "classes": [""],
+            "altText": "",
+            "value": "In vitae laoreet erat. Integer quis tortor hendrerit erat elementum pretium. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas erat velit, blandit sit amet interdum vitae, varius sit amet lacus. Vestibulum viverra at ipsum quis vulputate. Suspendisse potenti. In hendrerit, nulla vitae blandit vehicula, tortor velit viverra dolor, mollis blandit libero justo in nunc. Donec tincidunt enim sit amet eleifend congue. Cras suscipit maximus augue, in hendrerit lectus auctor ac. Sed pretium, est sit amet maximus venenatis, urna est pellentesque enim, sed venenatis odio ex vel est. In euismod congue sapien, vitae rutrum tortor sagittis ut. Cras tincidunt posuere ex vel egestas."
+        },
+        {
+            "type": "plaintext",
+            "classes": [],
+            "altText": "",
+            "value": "Donec eu ullamcorper ex. Ut mollis metus ac dictum venenatis. Ut a orci vitae nisl dictum semper. Nulla sit amet rhoncus justo, tempus fringilla mi. Mauris aliquet enim in risus volutpat hendrerit. Donec at nibh faucibus, faucibus turpis non, bibendum dui. Nunc ultrices ex sed mauris laoreet, id rutrum ligula fringilla. Morbi tristique lacus quis nibh ultrices, eget malesuada nunc bibendum. Nunc porttitor lorem non est cursus, ultrices facilisis elit viverra. Ut et lorem tortor. Vivamus dignissim massa non est dignissim vulputate vitae at mauris. Morbi velit sapien, luctus id orci et, tempor ornare lorem."
+        },
+        {
+            "type": "plaintext",
+            "classes": [""],
+            "altText": "",
+            "value": "Quisque dignissim lacus id orci lobortis elementum. Cras eu eros nisl. Quisque a molestie lectus. Integer leo felis, auctor quis ipsum non, tincidunt condimentum tortor. Pellentesque velit sem, sollicitudin non venenatis vel, condimentum ut urna. Cras ut mattis arcu, nec porttitor leo. Nam at lectus metus. Nullam non suscipit ipsum, nec consequat lacus. Vestibulum finibus, metus at sagittis tincidunt, augue eros sodales justo, vel egestas lacus nibh a libero."
+        },
+        {
+            "type": "plaintext",
+            "classes": [""],
+            "altText": "",
+            "value": "Quisque ut felis nulla. Nulla elementum ultricies sollicitudin. Quisque tincidunt faucibus sem quis egestas. Phasellus sit amet magna mollis, sollicitudin purus sit amet, ultrices tellus. Nulla facilisi. Donec lorem lacus, sollicitudin vel justo in, luctus rhoncus nisi. Nam vestibulum ante id hendrerit gravida. Aliquam sit amet arcu luctus, dignissim lectus molestie, finibus magna. Mauris eu ligula sit amet turpis volutpat tempor nec ac mauris. Vestibulum fringilla dolor quis congue varius. Quisque posuere maximus est in aliquet. Donec pulvinar nunc non tortor consequat interdum quis vitae nulla."
+        },
+        {
+            "type": "yt-embed",
+            "classes": [""],
+            "altText": "",
+            "value": "https://www.youtube.com/watch?v=C0DPdy98e4c"
+        }
     ]
 }

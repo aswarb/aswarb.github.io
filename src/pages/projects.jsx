@@ -1,11 +1,12 @@
 import * as projectMap from '!assets/project-mapping.json'
 import { useFetch } from '!hooks/useFetch.jsx'
+import { ProjectSection } from '!utils/makeProjectSection.jsx'
 
 import React, { useCallback, createContext, useContext, useState } from 'react'
 
 import DOMPurify from 'dompurify'
 
-import BackIcon from '!assets/icons/arrow_back_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg?react'  
+import BackIcon from '!assets/icons/arrow_back_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg?react'
 
 const projectImportUrl = createContext(null)
 
@@ -65,22 +66,18 @@ function ProjectFullPage({ url }) {
     const context = useContext(projectImportUrl)
     console.log(url)
     const result = useFetch(url)
-    const paragraphs = JSON.stringify(result.paragraphs);
-    let content = "";
-    console.log(paragraphs)
-
-    result.paragraphs?.forEach((element) => {content += "<p>"+ element + "</p>"})
-
+    let content = result.sections?.map((element, index) => {
+        return ProjectSection(index, element.type, element.classes, element.altText, element.value)
+    })
+    console.log(content)
     return (
         <>
-            <div className="titleBar">
+            <div style={{ borderRadius: 5 + 'px', border: 1 + 'px solid black' }}>
                 <div className="backButton" onClick={() => context.setValue(null)}>
-                    Back{' '} 
-		    <BackIcon className="svgIcon" />
+                    <BackIcon className="svgIcon" />
                 </div>
-		<hr/>
             </div>
-            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }} />
+            {content}
         </>
     )
 }
