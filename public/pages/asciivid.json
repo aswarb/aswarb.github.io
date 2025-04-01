@@ -33,7 +33,7 @@
         },
         {
             "type": "yt-embed",
-            "classes": [""],
+            "classes": ["yt-embed"],
             "altText": "",
             "value": "https://www.youtube.com/watch?v=C0DPdy98e4c"
         }
