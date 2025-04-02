@@ -1,7 +1,5 @@
 import './App.css'
 
-import { NavIcon } from '@/navIcon.jsx'
-
 import { Home } from '!pages/home.jsx'
 import { About } from '!pages/about.jsx'
 import { Projects } from '!pages/projects.jsx'
@@ -72,7 +70,6 @@ function App() {
                 <div className="emptyDiv"> </div>
                 <div className="titlebar">
                     <div className="namePlate">
-                        {' '}
                         <div> Andrew Swarbrick </div>
                         <div> Developer Portfolio</div>
                     </div>
@@ -83,7 +80,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/about" element={<About />} />
-                        <Route path="/projects" element={<Projects />} />
+                        <Route path="/projects/?projectUrl=?" element={<Projects />} />
                         <Route path="/leetcode" element={<Leetcode />} />
                         <Route path="/contact" element={<Contact />} />
                     </Routes>
