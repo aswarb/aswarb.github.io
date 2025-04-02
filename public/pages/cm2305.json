@@ -1,0 +1,33 @@
+{
+    "title": "CU 22/23 - CM2305 Group 13 - A Personal Security System for a Night Time Economy",
+    "quicknotes": [
+        "Team of 8 (later 7)",
+        "Android app in Java",
+        "TLS for secure HTTP requests",
+        "Focused on Java development, with minor contributions to the Flask (Python) server",
+        "Tracks users along chosen journey using HTTP APIs and Embedded google map",
+        "SMS messages to chosen contacts if user deviated",
+        "Achieved final grade of 86%"
+    ],
+    "links": {},
+    "sections": [
+        {
+            "type": "plaintext",
+            "classes": [],
+            "altText": "",
+            "value": "Placeholder text"
+        },
+        {
+            "type": "yt-embed",
+            "classes": ["yt-embed"],
+            "altText": "Demonstration Video",
+            "value": "https://www.youtube.com/watch?v=rPTyjR3NviA"
+        },
+        {
+            "type": "plaintext",
+            "classes": [],
+            "altText": "",
+            "value": "Placeholder text"
+        }
+    ]
+}

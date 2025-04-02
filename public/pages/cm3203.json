@@ -1,0 +1,28 @@
+{
+    "title": "AsciiVid",
+    "quicknotes": ["Individual Project",
+"Used TTCP CAGE Challenge 2 gym environment",
+"Python",
+"Study of a recurrent structure on performance",
+"PPO models for blue agent",
+"Used Stable Baselines 3 to make PPO models",
+"Red agent modified change strategy randomly", 
+"Models tuned with Optuna",
+"Results inconclusive",
+"Achieved final grade of 80%"
+],
+    "links": {},
+    "sections": [
+        {
+            "type": "plaintext",
+            "classes": [],
+            "altText": "",
+            "value": "Placeholder text"
+        },{
+            "type": "plaintext",
+            "classes": [],
+            "altText": "",
+            "value": "Placeholder text"
+        }
+    ]
+}

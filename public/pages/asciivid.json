@@ -1,0 +1,29 @@
+{
+    "title": "AsciiVid",
+    "quicknotes": ["Command-line python script",
+"Renders existing images / videos as ASCII text",
+"Raster formats only",
+"Used OpenCV, Numpy for image processing, Pygame, FFmpeg for audio",
+"Developed on & off in spare time"
+],
+    "links": {},
+    "sections": [
+        {
+            "type": "plaintext",
+            "classes": [],
+            "altText": "",
+            "value": "Placeholder text"
+        },
+        {
+            "type": "yt-embed",
+            "classes": ["yt-embed"],
+            "altText": "",
+            "value": "https://www.youtube.com/watch?v=uiZf73uJHhQ"
+        },{
+            "type": "plaintext",
+            "classes": [],
+            "altText": "",
+            "value": "Placeholder text"
+        }
+    ]
+}
