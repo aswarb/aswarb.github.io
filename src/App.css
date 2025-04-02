@@ -41,20 +41,24 @@ hr {
     height: 100%;
 }
 .svgIcon {
-    padding-top: 5px;
     fill: black;
-    height: fit-content;
-    padding-right: 5px;
-    padding-left: 5px;
 }
 
 .backButton {
     cursor: pointer;
-    width: fit-content;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .backButton:hover {
     background: darkred;
     filter: brightness(80%);
+}
+
+.path {
+    margin: auto;
 }
 
 .project-titlebar {
@@ -133,14 +137,15 @@ hr {
 }
 
 .card {
-    width: 14em;
-    height: 17em;
+    width: 17em;
+    height: 18em;
     border: 1px solid black;
     text-wrap: wrap;
-    border-radius: 1em;
+    border-radius: 0.5em;
     display: inline-block;
-    margin: 10px;
+    margin: 5px;
     cursor: pointer;
+    overflow: hidden;
 }
 .card * {
     width: 100%;
@@ -156,7 +161,6 @@ hr {
 
 .card .thumbnail {
     height: 50%;
-    border-radius: inherit;
 }
 
 .card .shortDesc {

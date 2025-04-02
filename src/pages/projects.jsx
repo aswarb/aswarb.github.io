@@ -74,13 +74,7 @@ function ProjectQuicknotes({ noteArray }) {
     return (
         <div className="quicknotes-container">
             <div className="title">
-                {' '}
-                <BoltIcon
-                    className="svgIcon"
-                    height="1em"
-                    width="1em"
-                    style={{ fill: 'yellow' }}
-                />{' '}
+                <BoltIcon className="svgIcon" height="1em" width="1em" style={{ fill: 'yellow' }} />{' '}
                 Quicknotes{' '}
             </div>
             <div className="quicknotes">
@@ -109,7 +103,7 @@ function ProjectFullPage({ url }) {
                             height: '100%',
                         }}
                     >
-                        {url}
+                        {result?.title}
                     </div>
                 </div>
             </div>
