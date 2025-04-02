@@ -27,13 +27,13 @@ function NavBar() {
                     </Link>
                     <Link
                         to="/projects"
-                        className={`navDest ${location.pathname === '/projects' ? 'active' : ''}`}
+                        className={`navDest ${location.pathname.includes('/projects') ? 'active' : ''}`}
                     >
                         Projects
                     </Link>
                     <Link
                         to="/leetcode"
-                        className={`navDest ${location.pathname === '/leetcode' ? 'active' : ''}`}
+                        className={`navDest ${location.pathname ==='/leetcode' ? 'active' : ''}`}
                     >
                         LeetCode
                     </Link>
