@@ -51,6 +51,7 @@ jobs:
 
 
   deploy:
+    if: github.event.head_commit.author != 'GitHub'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
