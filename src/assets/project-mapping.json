@@ -15,7 +15,7 @@
         {
             "title": "Automated Cyber Defence With Deep Reinforcement Learning",
             "thumbnail": "/thumbnails/cm3203-thumbnail.png",
-            "shortDescription": "Degree Thesis. OOP models created with PyTorch compared in the CybORG Gym Environment.",
+            "shortDescription": "Degree Thesis. PPO models created with PyTorch compared in the CybORG Gym Environment.",
             "fullContentLink": "/pages/cm3203.json"
         }
     ]

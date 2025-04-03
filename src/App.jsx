@@ -1,4 +1,4 @@
-import './App.css'
+import './App.scss'
 
 import { Home } from '!pages/home.jsx'
 import { About } from '!pages/about.jsx'
@@ -33,7 +33,7 @@ function NavBar() {
                     </Link>
                     <Link
                         to="/leetcode"
-                        className={`navDest ${location.pathname ==='/leetcode' ? 'active' : ''}`}
+                        className={`navDest ${location.pathname === '/leetcode' ? 'active' : ''}`}
                     >
                         LeetCode
                     </Link>
