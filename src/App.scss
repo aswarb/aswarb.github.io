@@ -1,3 +1,5 @@
+@import './themes.scss';
+
 #root {
     width: 100vw;
     height: 100vh;
@@ -9,10 +11,12 @@ body {
     padding: 0px;
     margin: 0px;
     overflow: hidden;
+    color: var(--md-sys-color-on-surface);
+    background-color: var(--md-sys-color-surface-container-lowest);
 }
 
 hr {
-    border: 0.1px solid black;
+    border: 0.1px solid var(--md-sys-color-outline-variant);
 }
 
 .navDest {
@@ -23,9 +27,14 @@ hr {
     margin-top: 5px;
 }
 
+.navDest:hover {
+    background-color: var(--md-sys-color-surface-bright);
+    color: var(--md-sys-color-on-surface-variant);
+}
+
 .navDest.active {
-    background-color: lightgrey;
-    box-shadow: 0px 2px 4px lightgrey;
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
 }
 
 .namePlate {
@@ -41,7 +50,7 @@ hr {
     height: 100%;
 }
 .svgIcon {
-    fill: black;
+    fill: var(--md-sys-color-on-surface-variant);
 }
 
 .backButton {
@@ -63,7 +72,7 @@ hr {
 
 .project-titlebar {
     height: fit-content;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
     display: flex;
     flex-direction: row;
 }
@@ -92,7 +101,7 @@ hr {
 .contentBox {
     grid-area: content;
     overflow: scroll;
-    border: 1px solid black;
+    background-color: var(--md-sys-color-surface-container-low);
     border-radius: 0.75em 0em 0em 0em;
     display: flex;
     justify-content: center;
@@ -111,7 +120,7 @@ hr {
 .cardContainer {
     height: fit-content;
     min-height: 100%;
-    background: red;
+    background: var(--md-sys-color-surface-container-low);
     padding-right: 15px;
     padding-left: 15px;
 }
@@ -123,7 +132,6 @@ hr {
 .navRail {
     grid-area: navbar;
     font-size: 14pt;
-    color: black;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -136,10 +144,15 @@ hr {
     margin-bottom: 30px;
 }
 
+.navSection * {
+    text-decoration: none;
+    color: var(--md-sys-color-on-surface);
+}
+
 .card {
     width: 17em;
     height: 18em;
-    border: 1px solid black;
+    background-color: var(--md-sys-color-surface-container);
     text-wrap: wrap;
     border-radius: 0.5em;
     display: inline-block;
@@ -147,9 +160,15 @@ hr {
     cursor: pointer;
     overflow: hidden;
 }
+
+.card:hover {
+    background-color: var(--md-sys-color-surface-container-high);
+    //box-shadow:0px 1px 20px 0 var(--md-sys-color-shadow);
+}
+
 .card * {
     width: 100%;
-    color: black;
+    color: var(--md-sys-color-on-surface);
 }
 
 .card .cardContent {
@@ -188,7 +207,7 @@ hr {
     border-radius: 1em;
 }
 .quicknotes-container {
-    background: lightgrey;
+    background: var(--md-sys-color-surface-container);
     margin: 5px;
     margin-left: auto;
     margin-right: auto;
@@ -216,7 +235,6 @@ hr {
 }
 
 .quicknotes > ul .note {
-    color: black;
     width: 99%;
     font-size: 14pt;
     break-inside: avoid;
@@ -224,7 +242,7 @@ hr {
 
 .quicknotes-container > .title {
     width: 100%;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
     padding-left: 10px;
     align-content: center;
 }

@@ -1,4 +1,4 @@
-import './App.css'
+import './App.scss'
 
 import { Home } from '!pages/home.jsx'
 import { About } from '!pages/about.jsx'
