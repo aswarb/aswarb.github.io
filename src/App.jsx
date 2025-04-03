@@ -33,7 +33,7 @@ function NavBar() {
                     </Link>
                     <Link
                         to="/leetcode"
-                        className={`navDest ${location.pathname ==='/leetcode' ? 'active' : ''}`}
+                        className={`navDest ${location.pathname === '/leetcode' ? 'active' : ''}`}
                     >
                         LeetCode
                     </Link>
