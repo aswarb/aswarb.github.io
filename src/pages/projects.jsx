@@ -30,7 +30,7 @@ function ProjectCard({ thumbnail, title, shortDescription, link }) {
             </Card>
         </Link>
     )
-    }
+}
 
 function ContextProvider({ children }) {
     const [value, setValue] = useState(null)
@@ -119,7 +119,16 @@ function PageContent() {
     const projects = projectMap.projects
     return (
         <div className="cardContainer">
-            {url === null ? <ProjectCards projects={projects} /> : <ProjectFullPage url={url} />}
+            {url === null ? (
+                <>
+                    <div className="project-titlebar">
+                        <div className="title"> Projects </div>
+                    </div>
+                    <ProjectCards projects={projects} />
+                </>
+            ) : (
+                <ProjectFullPage url={url} />
+            )}
         </div>
     )
 }
