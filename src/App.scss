@@ -116,10 +116,10 @@ hr {
 
 .contentBox {
     grid-area: content;
-    overflow: scroll;
     background-color: var(--md-sys-color-surface-container-low);
     border-radius: 0.75em 0em 0em 0em;
     display: flex;
+    overflow: auto;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -130,7 +130,16 @@ hr {
     width: 1000px;
     min-width: 400px;
     max-width: 1200px;
-    height: 100%;
+    overflow: auto;
+    height: calc(100% - 16px);
+    max-height: fit-content;
+    padding-right: 40px;
+    padding-left: 40px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border-radius: 0.25em;
+    background-color: var(--md-sys-color-surface-container);
+    color: var(--md-sys-color-on-surface-variant);
 }
 
 .titleBar {
@@ -155,18 +164,6 @@ hr {
 .navSection * {
     text-decoration: none;
     color: var(--md-sys-color-on-surface);
-}
-
-.cardContainer {
-    height: fit-content;
-    min-height: calc(100% - 16px);
-    background: var(--md-sys-color-surface-container);
-    padding-right: 40px;
-    padding-left: 40px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    border-radius: 0.25em;
-    color: var(--md-sys-color-on-surface-variant);
 }
 
 .yt-embed {

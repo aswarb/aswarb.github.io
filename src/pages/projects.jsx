@@ -118,7 +118,7 @@ function PageContent() {
 
     const projects = projectMap.projects
     return (
-        <div className="cardContainer">
+        <>
             {url === null ? (
                 <>
                     <div className="project-titlebar">
@@ -129,7 +129,7 @@ function PageContent() {
             ) : (
                 <ProjectFullPage url={url} />
             )}
-        </div>
+        </>
     )
 }
 
