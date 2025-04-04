@@ -5,6 +5,8 @@ import { ProjectSection } from '!utils/makeProjectSection.jsx'
 import React, { useCallback, createContext, useContext, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 
+import Card from '!components/cards'
+
 import BackIcon from '!assets/icons/arrow_back_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg?react'
 import BoltIcon from '!assets/icons/bolt_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg?react'
 
@@ -18,6 +20,17 @@ function ProjectCard({ thumbnail, title, shortDescription, link }) {
         },
         [context],
     )
+    console.log(thumbnail)
+    return (
+        <Link to={'/projects/?projectUrl=' + link}>
+            <Card>
+                <Card.Media src={thumbnail} alt="Card Thumbnail" />
+                <Card.Header>{title}</Card.Header>
+                <Card.Content>{shortDescription}</Card.Content>
+            </Card>
+        </Link>
+    )
+    /*
     return (
         <Link
             className="card"
@@ -32,7 +45,7 @@ function ProjectCard({ thumbnail, title, shortDescription, link }) {
                 <span className="shortDesc">{shortDescription}</span>
             </div>
         </Link>
-    )
+    )*/
 }
 
 function ContextProvider({ children }) {

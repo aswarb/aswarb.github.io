@@ -7,11 +7,12 @@ export default defineConfig({
     plugins: [react(), svgr({exportAsDefault:true, svgo:true})],
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, 'src/components'),
+            '!components': path.resolve(__dirname, 'src/components'),
             "!pages": path.resolve(__dirname, 'src/pages'),
             "!assets": path.resolve(__dirname, 'src/assets'),
             "!hooks": path.resolve(__dirname, 'src/hooks'),
             "!utils": path.resolve(__dirname, 'src/utils'),
+            "!src": path.resolve(__dirname, 'src'),
         },
     },
 })
