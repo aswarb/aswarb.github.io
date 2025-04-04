@@ -1,13 +1,13 @@
-@import 'color-themes/dark.scss';
-@import 'color-themes/light.scss';
+@use 'color-themes/dark.scss' as dark;
+@use 'color-themes/light.scss' as light;
 
 @media (prefers-color-scheme: light) {
     body {
-        @include light;
+        @include light.light;
     }
 }
 @media (prefers-color-scheme: dark) {
     body {
-        @include dark;
+        @include dark.dark;
     }
 }
