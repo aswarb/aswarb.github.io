@@ -29,11 +29,19 @@ hr {
     padding: 5px 10px 5px 10px;
     border-radius: 0.5em;
     margin-top: 5px;
+    transition:
+        color 0.1s,
+        background-color 0.1s,
+        filter 0.1s;
 }
 
 .navDest:hover {
     background-color: var(--md-sys-color-surface-bright);
     color: var(--md-sys-color-on-surface-variant);
+}
+
+.navDest:active {
+    filter: brightness(90%);
 }
 
 .navDest.active {
