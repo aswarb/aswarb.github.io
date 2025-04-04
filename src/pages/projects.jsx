@@ -30,23 +30,7 @@ function ProjectCard({ thumbnail, title, shortDescription, link }) {
             </Card>
         </Link>
     )
-    /*
-    return (
-        <Link
-            className="card"
-            onClick={() => {
-                buttonClicked(link)
-            }}
-            to={'/projects/?projectUrl=' + link}
-        >
-            <div className="cardContent">
-                <img className="thumbnail" src={thumbnail} />
-                <span className="title">{title}</span>
-                <span className="shortDesc">{shortDescription}</span>
-            </div>
-        </Link>
-    )*/
-}
+    }
 
 function ContextProvider({ children }) {
     const [value, setValue] = useState(null)
