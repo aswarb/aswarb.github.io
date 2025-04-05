@@ -9,7 +9,7 @@
     "lint": "eslint . --fix",
     "preview": "vite preview",
     "format": "prettier --write src/",
-    "postbuild":"cp dist/index.html/ dist/404.html"
+    "postbuild":"cp dist/index.html dist/404.html"
   },
   "dependencies": {
     "@svgr/webpack": "^8.1.0",
