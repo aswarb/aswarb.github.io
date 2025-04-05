@@ -5,6 +5,8 @@ import { ProjectSection } from '!utils/makeProjectSection.jsx'
 import React, { useCallback, createContext, useContext, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 
+import Card from '!components/cards'
+
 import BackIcon from '!assets/icons/arrow_back_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg?react'
 import BoltIcon from '!assets/icons/bolt_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg?react'
 
@@ -18,19 +20,14 @@ function ProjectCard({ thumbnail, title, shortDescription, link }) {
         },
         [context],
     )
+    console.log(thumbnail)
     return (
-        <Link
-            className="card"
-            onClick={() => {
-                buttonClicked(link)
-            }}
-            to={'/projects/?projectUrl=' + link}
-        >
-            <div className="cardContent">
-                <img className="thumbnail" src={thumbnail} />
-                <span className="title">{title}</span>
-                <span className="shortDesc">{shortDescription}</span>
-            </div>
+        <Link to={'/projects/?projectUrl=' + link}>
+            <Card>
+                <Card.Media src={thumbnail} alt="Card Thumbnail" />
+                <Card.Header>{title}</Card.Header>
+                <Card.Content>{shortDescription}</Card.Content>
+            </Card>
         </Link>
     )
 }
@@ -121,9 +118,18 @@ function PageContent() {
 
     const projects = projectMap.projects
     return (
-        <div className="cardContainer">
-            {url === null ? <ProjectCards projects={projects} /> : <ProjectFullPage url={url} />}
-        </div>
+        <>
+            {url === null ? (
+                <>
+                    <div className="project-titlebar">
+                        <div className="title"> Projects </div>
+                    </div>
+                    <ProjectCards projects={projects} />
+                </>
+            ) : (
+                <ProjectFullPage url={url} />
+            )}
+        </>
     )
 }
 

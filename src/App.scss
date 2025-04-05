@@ -1,8 +1,12 @@
-@import './themes.scss';
+@use './themes.scss';
 
 #root {
     width: 100vw;
     height: 100vh;
+}
+
+:root * {
+    box-sizing: border-box;
 }
 
 body {
@@ -23,13 +27,21 @@ hr {
     display: block;
     text-decoration: none;
     padding: 5px 10px 5px 10px;
-    border-radius: 1em;
+    border-radius: 0.5em;
     margin-top: 5px;
+    transition:
+        color 0.1s,
+        background-color 0.1s,
+        filter 0.1s;
 }
 
 .navDest:hover {
     background-color: var(--md-sys-color-surface-bright);
     color: var(--md-sys-color-on-surface-variant);
+}
+
+.navDest:active {
+    filter: brightness(90%);
 }
 
 .navDest.active {
@@ -63,6 +75,7 @@ hr {
 }
 .backButton:hover {
     background: darkred;
+    border-radius: 0.5em;
     filter: brightness(80%);
 }
 
@@ -72,17 +85,20 @@ hr {
 
 .project-titlebar {
     height: fit-content;
-    border-bottom: 1px solid var(--md-sys-color-outline-variant);
     display: flex;
     flex-direction: row;
+    padding-top: 5px;
+    margin: 10px;
 }
 .project-titlebar > .title {
     flex-grow: 1;
     height: fit-content;
-    font-size: 1.5em;
+    font-size: 18pt;
     padding-left: 10px;
+    margin-left: 10px;
     margin-top: auto;
     margin-bottom: auto;
+    padding: 5px;
 }
 
 .pageGrid {
@@ -100,10 +116,10 @@ hr {
 
 .contentBox {
     grid-area: content;
-    overflow: scroll;
     background-color: var(--md-sys-color-surface-container-low);
     border-radius: 0.75em 0em 0em 0em;
     display: flex;
+    overflow: auto;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -114,15 +130,16 @@ hr {
     width: 1000px;
     min-width: 400px;
     max-width: 1200px;
-    height: 100%;
-}
-
-.cardContainer {
-    height: fit-content;
-    min-height: 100%;
-    background: var(--md-sys-color-surface-container-low);
-    padding-right: 15px;
-    padding-left: 15px;
+    overflow: auto;
+    height: calc(100% - 16px);
+    max-height: fit-content;
+    padding-right: 40px;
+    padding-left: 40px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border-radius: 0.25em;
+    background-color: var(--md-sys-color-surface-container);
+    color: var(--md-sys-color-on-surface-variant);
 }
 
 .titleBar {
@@ -149,51 +166,6 @@ hr {
     color: var(--md-sys-color-on-surface);
 }
 
-.card {
-    width: 17em;
-    height: 18em;
-    background-color: var(--md-sys-color-surface-container);
-    text-wrap: wrap;
-    border-radius: 0.5em;
-    display: inline-block;
-    margin: 5px;
-    cursor: pointer;
-    overflow: hidden;
-}
-
-.card:hover {
-    background-color: var(--md-sys-color-surface-container-high);
-    //box-shadow:0px 1px 20px 0 var(--md-sys-color-shadow);
-}
-
-.card * {
-    width: 100%;
-    color: var(--md-sys-color-on-surface);
-}
-
-.card .cardContent {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.card .thumbnail {
-    height: 50%;
-}
-
-.card .shortDesc {
-    flex-grow: 1;
-    font-size: 12pt;
-}
-
-.card .title {
-    font-size: 13pt;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-weight: 575;
-}
-
 .yt-embed {
     margin-left: auto;
     margin-right: auto;
@@ -207,13 +179,14 @@ hr {
     border-radius: 1em;
 }
 .quicknotes-container {
-    background: var(--md-sys-color-surface-container);
+    background: var(--md-sys-color-secondary-container);
     margin: 5px;
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
     width: 95%;
     border-radius: 0.37em;
+    padding: 20px;
 }
 .quicknotes {
     height: fit-content;
@@ -221,6 +194,7 @@ hr {
     column-count: 2;
     column-fill: balance;
     column-gap: 20px;
+    color: var(--md-sys-color-on-secondary-container);
 }
 
 .quicknotes > ul {
@@ -231,7 +205,11 @@ hr {
     margin-top: 0px;
     margin-bottom: 0px;
     list-style-position: inside;
+    padding: 2px;
     list-style-type: disc;
+}
+.quicknotes li {
+    padding: 1px;
 }
 
 .quicknotes > ul .note {
@@ -242,7 +220,9 @@ hr {
 
 .quicknotes-container > .title {
     width: 100%;
-    border-bottom: 1px solid var(--md-sys-color-outline-variant);
     padding-left: 10px;
+    font-size: 15pt;
+    margin-bottom: 5px;
     align-content: center;
+    color: var(--md-sys-color-on-secondary-container);
 }
