@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import  style  from './collapsible.module.scss?module'
+import style from './collapsible.module.scss?module'
 
 export default function Collapsible({ title, children }) {
     const [state, setState] = useState(false)
@@ -14,7 +14,7 @@ export default function Collapsible({ title, children }) {
             >
                 {title}
             </div>
-            <div className={style.content + " " +(state ? style.active : '')}>{children}</div>
+            <div className={style.content + ' ' + (state ? style.active : '')}>{children}</div>
         </>
     )
 }

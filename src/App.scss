@@ -124,52 +124,50 @@ hr {
     display: grid;
     grid-template-columns: 1fr fit-content(100%) 1fr;
     grid-template-rows: 1fr;
-    grid-template-areas:
-        'leftcol main rightcol';
+    grid-template-areas: 'leftcol main rightcol';
 }
 
- 
 .widget {
-  position:absolute;
-  min-width: 100px;
-  width:150px;
-  height:fit-content;
-  padding:10px;
-  border-radius:0.5em;
-  margin-top:8px;
-  background-color: var(--md-sys-color-surface-container);
+    position: absolute;
+    min-width: 100px;
+    width: 150px;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 0.5em;
+    margin-top: 8px;
+    background-color: var(--md-sys-color-surface-container);
 }
 
 .widget.leftanchor {
-  left:5px;
+    left: 5px;
 }
 
 .widget.rightanchor {
-  right:5px;
+    right: 5px;
 }
 
 .widget.verticalcenter {
-  top:15%;
-  bottom:85%;
+    top: 15%;
+    bottom: 85%;
 }
 
-.leftcol{
-    position:relative;
-    grid-area:leftcol
+.leftcol {
+    position: relative;
+    grid-area: leftcol;
 }
 
-.rightcol{
-    position:relative;
-    grid-area:rightcol
+.rightcol {
+    position: relative;
+    grid-area: rightcol;
 }
 
 .content {
-  grid-area: main;
+    grid-area: main;
     min-width: 400px;
     max-width: 1200px;
-    width:1000px;
-    position:relative;
-    overflow:auto;
+    width: 1000px;
+    position: relative;
+    overflow: auto;
     height: calc(100% - 16px);
     max-height: fit-content;
     padding-right: 40px;
