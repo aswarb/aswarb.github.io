@@ -136,6 +136,28 @@ hr {
     border-radius: 0.5em;
     margin-top: 8px;
     background-color: var(--md-sys-color-surface-container);
+    font-size: 13pt;
+}
+
+ul {
+    padding-left: 30px;
+}
+
+ul.nobullets {
+    list-style-type: none;
+}
+
+a.hidedecos {
+    text-decoration: none;
+    color: var(--md-sys-color-on-surface);
+}
+
+.widget.shortcutBox li:has(a.active) {
+    border-bottom: 1px solid var(--md-sys-color-primary-container);
+}
+
+.widget.shortcutBox a.current {
+    color: var(--md-sys-color-primary);
 }
 
 .widget.leftanchor {
