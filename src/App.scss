@@ -152,8 +152,13 @@ a.hidedecos {
     color: var(--md-sys-color-on-surface);
 }
 
+.widget.shortcutBox li {
+    border-bottom: 0px solid rgba(0, 0, 0, 0);
+    transition: border-bottom 0.1s;
+}
+
 .widget.shortcutBox li:has(a.active) {
-    border-bottom: 1px solid var(--md-sys-color-primary-container);
+    border-bottom: 2px solid var(--md-sys-color-primary-container);
 }
 
 .widget.shortcutBox a.current {
@@ -197,6 +202,7 @@ a.hidedecos {
     margin-top: 8px;
     margin-bottom: 8px;
     border-radius: 0.25em;
+    scroll-behavior: smooth;
     background-color: var(--md-sys-color-surface-container);
     color: var(--md-sys-color-on-surface-variant);
 }

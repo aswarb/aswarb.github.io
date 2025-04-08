@@ -29,7 +29,7 @@ export function About() {
                 setActiveSection(sortedEntries[0].target.id)
                 console.log(activeSection)
             },
-            { threshold: 0.5, rootMargin: '0px' },
+            { threshold: 0.1, rootMargin: '0px' },
         )
         pageSections.forEach((section) => {
             if (sectionRefs.current[section.id]) {
@@ -52,6 +52,10 @@ export function About() {
         return () => parent.addEventListener('scroll', onScroll)
     })
 
+    const callback = (id) => {
+        document.getElementById(id).scrollIntoView({ block: 'center', inline: 'nearest' })
+    }
+
     return (
         <>
             <div className="leftcol">
@@ -65,7 +69,10 @@ export function About() {
                                             'hidedecos ' +
                                             (section.id === activeSection ? 'active' : '')
                                         }
-                                        href={'./about#' + section.id}
+                                        //href={'./about#' + section.id}
+                                        onClick={(e) => {
+                                            callback(section.id)
+                                        }}
                                     >
                                         {section.label}
                                     </a>
