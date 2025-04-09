@@ -1,0 +1,62 @@
+@use '!src/themes.scss';
+.timeline {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.timeline .dot {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: var(--md-sys-color-outline);
+    margin: 5px;
+    transition: background-color 0.2s;
+}
+
+.timeline .details {
+    flex-grow: 1;
+    background-color: var(--md-sys-color-surface-container-high);
+    border-radius: 0.5em;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    padding: 10px;
+    padding-left: 15px;
+
+    transition: background-color 0.2s filter 0.2s;
+}
+
+.timeline .connector {
+    width: 2px;
+    height: 20px;
+    border-radius: 1em;
+    flex-grow: 1;
+    background-color: var(--md-sys-color-outline);
+    transition: background-color 0.2s;
+}
+
+.timeline .event {
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+
+.timeline .event:hover .details {
+    filter: brightness(98%);
+}
+
+.timeline .event:hover .dot {
+    background-color: var(--md-sys-color-primary);
+}
+
+.timeline .event:hover .connector {
+    background-color: var(--md-sys-color-primary);
+}
+
+.timeline .bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
