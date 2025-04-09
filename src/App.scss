@@ -140,7 +140,7 @@ hr {
 }
 
 ul {
-    padding-left: 30px;
+    padding-left: 20px;
 }
 
 ul.nobullets {
@@ -149,20 +149,98 @@ ul.nobullets {
 
 a.hidedecos {
     text-decoration: none;
-    color: var(--md-sys-color-on-surface);
 }
 
 .widget.shortcutBox li {
     border-bottom: 0px solid rgba(0, 0, 0, 0);
-    transition: border-bottom 0.1s;
+    transition:
+        border-bottom 0.1s,
+        color 0.1s,
+        background-color 0.1s;
+    padding: 2px;
+    padding-left: 5px;
+    border-radius: 0.25em;
+    cursor: pointer;
+}
+
+.widget.shortcutBox li:hover {
+    background-color: var(--md-sys-color-surface-container-high);
+}
+
+.widget.shortcutBox li:active {
+    background-color: var(--md-sys-color-surface-container-highest);
 }
 
 .widget.shortcutBox li:has(a.active) {
-    border-bottom: 2px solid var(--md-sys-color-primary-container);
+    background-color: var(--md-sys-color-surface-container-high);
+    border-bottom: 1px solid var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-primary);
 }
 
-.widget.shortcutBox a.current {
-    color: var(--md-sys-color-primary);
+.timeline {
+    //
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.timeline .dot {
+    //
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: var(--md-sys-color-outline);
+    margin: 5px;
+    transition: background-color 0.2s;
+}
+
+.timeline .details {
+    flex-grow: 1;
+    background-color: var(--md-sys-color-surface-container-high);
+    border-radius: 0.5em;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    padding: 10px;
+    padding-left: 15px;
+
+    transition: background-color 0.2s filter 0.2s;
+}
+
+.timeline .connector {
+    width: 2px;
+    height: 20px;
+    border-radius: 1em;
+    flex-grow: 1;
+    background-color: var(--md-sys-color-outline);
+    transition: background-color 0.2s;
+}
+
+.timeline .event {
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+
+.timeline .event:hover .details {
+    filter: brightness(105%);
+}
+
+.timeline .event:hover .dot {
+    filter: brightness(105%);
+    background-color: var(--md-sys-color-primary);
+}
+
+.timeline .event:hover .connector {
+    filter: brightness(105%);
+    background-color: var(--md-sys-color-primary-container);
+}
+
+.timeline .bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .widget.leftanchor {

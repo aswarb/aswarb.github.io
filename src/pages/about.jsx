@@ -4,11 +4,9 @@ import style from './about.module.css?module'
 import { useRef, useState, useEffect } from 'react'
 
 const pageSections = [
-    { id: 't1', label: 'Section 1' },
-    { id: 't2', label: 'Section 2' },
-    { id: 't3', label: 'Section 3' },
-    { id: 't4', label: 'Section 4' },
-    { id: 't5', label: 'Section 5' },
+    { id: 'education', label: 'Education' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'skills', label: 'Skills' },
 ]
 
 export function About() {
@@ -20,11 +18,9 @@ export function About() {
         const parent = document.getElementById('content')
         const observer = new IntersectionObserver(
             (entries) => {
-                //console.log(entries)
-                //console.log(entries.sort((entry) => entry.time))
                 const filteredEntries = entries.filter((entry) => entry.isIntersecting)
                 const sortedEntries = filteredEntries.sort(
-                    (entry) => scrollY - entry.target.offsetTop / parent.scrollHeight,
+                    (entry) => scrollY - entry.target.offsetTop / parent.scrollHeight - 0.1,
                 )
                 setActiveSection(sortedEntries[0].target.id)
                 console.log(activeSection)
@@ -41,8 +37,6 @@ export function About() {
 
     useEffect(() => {
         const onScroll = (event) => {
-            //console.log(event.target.scrollTop / event.target.scrollTopMax)
-            //console.log(event.target.scrollTop)
             setScrollY(event.target.scrollTop / event.target.scrollTopMax)
         }
 
@@ -84,6 +78,62 @@ export function About() {
             </div>
             <div id="content" className="content">
                 <h1>about</h1>
+                <div className="timeline">
+                    <div className="event">
+                        <div className="bar">
+                            <div className="dot" />
+                            <div className="connector" />
+                        </div>
+
+                        <div className="details">
+                            details Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+                            a nibh nec felis dapibus mollis sit amet vitae ligula. Pellentesque sed
+                            lorem porta, vehicula felis sit amet, malesuada lectus. Vestibulum non
+                            commodo neque. Pellentesque at fringilla sapien. Nunc eu lorem a dolor
+                            rhoncus rhoncus. Nulla sit amet convallis neque. Aliquam posuere ligula
+                            libero. Mauris cursus, augue id aliquam rhoncus, erat ex aliquet tellus,
+                            in maximus nisi magna vitae nibh. Proin quis libero non justo
+                            scelerisque imperdiet. Nunc quis tortor id nibh suscipit tempus. Etiam
+                            facilisis urna fringilla, bibendum nibh in, egestas ligula. Sed
+                            elementum justo est. Morbi eu feugiat lectus. Quisque eget bibendum
+                            dolor. Donec sed orci leo.
+                        </div>
+                    </div>
+                    <div className="event">
+                        <div className="bar">
+                            <div className="dot" />
+                            <div className="connector" />
+                        </div>
+
+                        <div className="details">
+                            <p>
+                                Vivamus viverra, nulla nec varius vulputate, libero ipsum semper
+                                quam, ac laoreet mi velit sed nibh. Donec eleifend, leo nec suscipit
+                                aliquam, dui justo pretium leo, eu commodo neque est vel elit. Etiam
+                                egestas non sem nec laoreet. Morbi vitae sem egestas, dignissim elit
+                                eget, elementum urna. Aliquam quis facilisis tortor. Nulla ac luctus
+                                ligula. Quisque sagittis neque ligula, eget sagittis est tincidunt
+                                id. Curabitur ultricies vitae augue at congue. Donec blandit laoreet
+                                tellus, eget eleifend risus commodo quis. Donec ut rutrum sapien.
+                                Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc
+                                vestibulum, massa vel pellentesque efficitur, massa augue mattis
+                                leo, eu viverra odio turpis quis magna. Cras tincidunt sem a dui
+                                efficitur, at mollis tellus posuere. Maecenas aliquet purus enim,
+                                vestibulum viverra diam convallis ut. Donec sit amet semper turpis,
+                                quis gravida nisi. Sed ut luctus ex.
+                            </p>
+                            Aenean vel diam at tellus interdum molestie a ac ligula. Morbi viverra
+                            nec sapien sit amet rhoncus. Nunc lobortis suscipit nibh, eu consectetur
+                            nunc ullamcorper nec. Morbi ante felis, viverra ut dignissim vitae,
+                            elementum quis nibh. Pellentesque libero massa, efficitur faucibus massa
+                            in, luctus posuere metus. Sed vulputate sit amet est vel laoreet. Nam
+                            malesuada leo sapien, eget vestibulum ipsum dignissim a. Morbi consequat
+                            imperdiet pellentesque. Mauris ullamcorper, dolor et tempor tempus,
+                            neque massa sagittis lectus, condimentum suscipit orci nisi a dui. Nulla
+                            quis mauris mi.
+                        </div>
+                    </div>
+                </div>
                 <h2
                     id={pageSections[0].id}
                     key={pageSections[0].id}
@@ -91,44 +141,16 @@ export function About() {
                 >
                     {pageSections[0].label}
                 </h2>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac vulputate diam. In
-                sed velit sit amet lorem aliquam scelerisque vel in turpis. In nec pellentesque
-                orci. In a laoreet elit. Nam sollicitudin elit ut massa suscipit, nec egestas ipsum
-                suscipit. Morbi eu posuere massa. Ut laoreet luctus commodo. Sed convallis, nibh a
-                feugiat placerat, ex metus sodales ligula, ut gravida mi tellus id nisi. Sed
-                vestibulum, ex pretium bibendum consectetur, lacus mauris viverra neque, vitae
-                pulvinar diam dolor auctor ante. Aenean vehicula pulvinar dui. Lorem ipsum dolor sit
-                amet, consectetur adipiscing elit. Nam ac vulputate diam. In sed velit sit amet
-                lorem aliquam scelerisque vel in turpis. In nec pellentesque orci. In a laoreet
-                elit. Nam sollicitudin elit ut massa suscipit, nec egestas ipsum suscipit. Morbi eu
-                posuere massa. Ut laoreet luctus commodo. Sed convallis, nibh a feugiat placerat, ex
-                metus sodales ligula, ut gravida mi tellus id nisi. Sed vestibulum, ex pretium
-                bibendum consectetur, lacus mauris viverra neque, vitae pulvinar diam dolor auctor
-                ante. Aenean vehicula pulvinar dui.
+
+                <p>Coleg Gwent</p>
+                <p>Cardiff University</p>
+
                 <h2
                     id={pageSections[1].id}
                     ref={(el) => (sectionRefs.current[pageSections[1].id] = el)}
                 >
                     {pageSections[1].label}
                 </h2>
-                Proin tincidunt odio ac tellus convallis euismod. Integer tincidunt dolor metus, ac
-                imperdiet sem bibendum nec. Mauris laoreet leo egestas, lacinia nunc a, consectetur
-                ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-                cubilia curae; Vestibulum et maximus tellus. Phasellus egestas mauris non sem
-                tincidunt, vitae elementum est mollis. Nulla volutpat rutrum tortor id posuere.
-                Maecenas tristique velit eget ante consequat sagittis. In eget ultricies enim.
-                Integer aliquam, nibh sed ullamcorper maximus, mauris nisi tempus erat, eget aliquet
-                tellus ex at justo. Curabitur nec vehicula quam, a bibendum ex. Curabitur at enim
-                vehicula, rutrum turpis fringilla, malesuada mauris. Quisque posuere sapien elit,
-                non placerat turpis vehicula porta. In ut mattis nulla. Sed imperdiet eget felis ut
-                aliquam. Etiam iaculis porta purus. Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Nam ac vulputate diam. In sed velit sit amet lorem aliquam
-                scelerisque vel in turpis. In nec pellentesque orci. In a laoreet elit. Nam
-                sollicitudin elit ut massa suscipit, nec egestas ipsum suscipit. Morbi eu posuere
-                massa. Ut laoreet luctus commodo. Sed convallis, nibh a feugiat placerat, ex metus
-                sodales ligula, ut gravida mi tellus id nisi. Sed vestibulum, ex pretium bibendum
-                consectetur, lacus mauris viverra neque, vitae pulvinar diam dolor auctor ante.
-                Aenean vehicula pulvinar dui.
                 <h2
                     id={pageSections[2].id}
                     ref={(el) => (sectionRefs.current[pageSections[2].id] = el)}
@@ -136,71 +158,6 @@ export function About() {
                     {' '}
                     {pageSections[2].label}{' '}
                 </h2>
-                Curabitur non massa quis dui placerat egestas et nec metus. Morbi finibus mollis
-                felis, a tristique sem vestibulum vel. Curabitur arcu lectus, aliquet eu ipsum et,
-                ultrices fermentum magna. Donec efficitur sapien at mi viverra laoreet. Nulla
-                laoreet, ligula ac blandit faucibus, dui tellus tempus diam, nec molestie turpis
-                orci sit amet neque. Nam rutrum, felis ac scelerisque suscipit, ante ante sodales
-                odio, a auctor lacus dolor posuere nulla. Donec posuere enim non magna tincidunt, at
-                volutpat magna pulvinar. Fusce urna leo, fermentum a leo et, volutpat aliquam erat.
-                Morbi justo urna, maximus vitae auctor eu, lobortis eu augue. Nunc semper cursus
-                lacus, id ullamcorper tortor pharetra tincidunt. In ornare ac turpis nec tincidunt.
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-                curae; Proin eget lacinia massa, quis dignissim lacus. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Nam ac vulputate diam. In sed velit sit amet lorem
-                aliquam scelerisque vel in turpis. In nec pellentesque orci. In a laoreet elit. Nam
-                sollicitudin elit ut massa suscipit, nec egestas ipsum suscipit. Morbi eu posuere
-                massa. Ut laoreet luctus commodo. Sed convallis, nibh a feugiat placerat, ex metus
-                sodales ligula, ut gravida mi tellus id nisi. Sed vestibulum, ex pretium bibendum
-                consectetur, lacus mauris viverra neque, vitae pulvinar diam dolor auctor ante.
-                Aenean vehicula pulvinar dui.
-                <h2
-                    id={pageSections[3].id}
-                    ref={(el) => (sectionRefs.current[pageSections[3].id] = el)}
-                >
-                    {' '}
-                    {pageSections[3].label}{' '}
-                </h2>
-                Curabitur volutpat elit id rutrum mattis. Mauris urna dolor, hendrerit eget
-                tristique ut, convallis vel neque. Donec metus lorem, pulvinar nec turpis ac,
-                pellentesque mattis leo. Pellentesque ultrices nisl sit amet dolor finibus
-                consequat. Pellentesque lacinia felis quis ultricies aliquet. Vivamus scelerisque
-                orci dolor, vel porta nulla semper at. Maecenas ac ex eu metus accumsan sodales ac
-                in ante. Cras vitae lacus eu ante maximus elementum at eget sapien. Pellentesque
-                volutpat est ac volutpat auctor. Sed accumsan in est quis luctus. Ut lacinia sem
-                nisl, a finibus felis viverra quis. Curabitur convallis sapien sem, in pharetra
-                ipsum aliquam vel. Nullam ornare metus vitae nisi euismod, at commodo dui
-                consectetur. Phasellus mollis eros orci, nec pulvinar velit vestibulum a. Curabitur
-                ut massa elit. Suspendisse laoreet et lacus eget facilisis. Lorem ipsum dolor sit
-                amet, consectetur adipiscing elit. Nam ac vulputate diam. In sed velit sit amet
-                lorem aliquam scelerisque vel in turpis. In nec pellentesque orci. In a laoreet
-                elit. Nam sollicitudin elit ut massa suscipit, nec egestas ipsum suscipit. Morbi eu
-                posuere massa. Ut laoreet luctus commodo. Sed convallis, nibh a feugiat placerat, ex
-                metus sodales ligula, ut gravida mi tellus id nisi. Sed vestibulum, ex pretium
-                bibendum consectetur, lacus mauris viverra neque, vitae pulvinar diam dolor auctor
-                ante. Aenean vehicula pulvinar dui.
-                <h2
-                    id={pageSections[4].id}
-                    ref={(el) => (sectionRefs.current[pageSections[4].id] = el)}
-                >
-                    {' '}
-                    {pageSections[4].label}{' '}
-                </h2>
-                Cras condimentum massa vel libero lacinia, dictum hendrerit elit efficitur. Proin
-                lobortis euismod dolor, eu elementum enim maximus eu. Suspendisse consequat erat eu
-                laoreet varius. Fusce posuere, odio eget ultricies tempus, massa massa pellentesque
-                massa, quis feugiat augue dui a elit. Nulla id consequat mi, in lacinia velit.
-                Vestibulum pharetra erat sed ex laoreet commodo. Suspendisse molestie enim velit, at
-                laoreet metus luctus sed. Morbi tempus facilisis dui nec luctus. Nullam dictum
-                convallis enim eget finibus. Nunc molestie tempus augue sed varius. Praesent rutrum
-                eget felis sit amet scelerisque. Ut id tempus mi. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Nam ac vulputate diam. In sed velit sit amet lorem
-                aliquam scelerisque vel in turpis. In nec pellentesque orci. In a laoreet elit. Nam
-                sollicitudin elit ut massa suscipit, nec egestas ipsum suscipit. Morbi eu posuere
-                massa. Ut laoreet luctus commodo. Sed convallis, nibh a feugiat placerat, ex metus
-                sodales ligula, ut gravida mi tellus id nisi. Sed vestibulum, ex pretium bibendum
-                consectetur, lacus mauris viverra neque, vitae pulvinar diam dolor auctor ante.
-                Aenean vehicula pulvinar dui.
             </div>
         </>
     )
