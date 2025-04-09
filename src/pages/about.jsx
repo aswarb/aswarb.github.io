@@ -79,7 +79,7 @@ export function About() {
                 </div>
             </div>
             <div id="content" className="content">
-                <h1>about</h1>
+                <h1>About</h1>
 
                 <h2
                     id={pageSections[0].id}
@@ -102,6 +102,7 @@ export function About() {
                     <Timeline.Event>
                         <h3> Cardiff University - BSc. Computer Science</h3>
                         <h4> Degree Classification: 2:1</h4>
+                        <Collapsible title="Projects"> test </Collapsible>
                     </Timeline.Event>
                 </Timeline>
 

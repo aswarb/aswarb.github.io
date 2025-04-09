@@ -1,15 +1,26 @@
 @use '!src/themes.scss';
 
 .title {
-    background-color: var(--md-sys-color-surface-container-high);
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
     border-radius: 0.5em;
     font-size: 14pt;
     padding: 5px;
     padding-left: 10px;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.title:hover {
+    filter: brightness(95%);
 }
 
 .content {
-    width: 97%;
+    width: 99%;
+    color: var(--md-sys-color-on-secondary-container);
     max-height: 0px;
     border-radius: 0.5em;
     overflow: hidden;
@@ -26,7 +37,18 @@
 
 .content.active {
     max-height: 540px;
-    background-color: var(--md-sys-color-surface-container-high);
+    background-color: var(--md-sys-color-secondary-container);
     font-size: 12pt;
     padding-left: 10px;
+    filter: brightness(110%);
+}
+
+.svgArrow {
+    fill: var(--md-sys-color-on-secondary-container);
+    transition: transform 0.1s;
+    padding-bottom: -5px;
+}
+
+.svgArrow.active {
+    transform: rotate(180deg);
 }

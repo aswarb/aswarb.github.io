@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import style from './collapsible.module.scss?module'
-;('../../assets/icons/arrow_drop_down_48dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.svg')
-import DownIcon from '!assets/icons/arrow_drop_down_48dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.svg?react'
+
+import DownIcon from '!assets/icons/arrow_drop_down_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg?react'
+import upIcon from '!assets/icons/arrow_drop_up_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg?react'
+
 
 export default function Collapsible({ title, children }) {
     const [state, setState] = useState(false)
@@ -14,12 +16,7 @@ export default function Collapsible({ title, children }) {
                     setState(!state)
                 }}
             >
-                <DownIcon
-                    className={style.svgArrow + ' ' + (state ? style.active : '')}
-                    height="1.4em"
-                    width="1.4em"
-                    viewBox="0 -960 960 960"
-                />
+	<DownIcon className={style.svgArrow + ' ' + (state ? style.active : '')} height="1em" width="1em" viewBox="250 -700 1000 1000"/>
                 {title}
             </div>
             <div className={style.content + ' ' + (state ? style.active : '')}>{children}</div>
