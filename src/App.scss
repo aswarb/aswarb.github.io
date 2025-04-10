@@ -195,7 +195,7 @@ a.hidedecos {
 
 .widget.shortcutBox li:has(a.active) {
     background-color: var(--md-sys-color-surface-container-high);
-    border-bottom: 1px solid var(--md-sys-color-primary-container);
+    border-bottom: 1px solid var(--md-sys-color-primary);
     color: var(--md-sys-color-primary);
 }
 
