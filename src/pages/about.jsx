@@ -1,6 +1,6 @@
 import Collapsible from '!components/collapsible'
 import style from './about.module.css?module'
-
+import * as projectMap from '!assets/project-mapping.json'
 import { useRef, useState, useEffect } from 'react'
 
 import Timeline from '!components/timeline'
@@ -90,19 +90,32 @@ export function About() {
                 </h2>
 
                 <Timeline>
-                    <Timeline.Event>
+                    <Timeline.Event date="Sept. 2019 - June 2021">
+                        <hr />
                         <h3> Coleg Gwent - A-levels </h3>
                         <ul>
-                            <li> Computer Science </li>
-                            <li> Mathematics</li>
-                            <li> Physics </li>
-                            <li> Welsh Baccalaureate </li>
+                            <li> Computer Science - A*</li>
+                            <li> Physics - A</li>
+                            <li> Mathematics - B</li>
+                            <li> Welsh Baccalaureate - A</li>
                         </ul>
                     </Timeline.Event>
-                    <Timeline.Event>
+                    <Timeline.Event date="Sept. 2021 - July 2024">
+                        <hr />
                         <h3> Cardiff University - BSc. Computer Science</h3>
                         <h4> Degree Classification: 2:1</h4>
-                        <Collapsible title="Projects"> test </Collapsible>
+                        <Collapsible title="Projects">
+                            <div className=""> </div>
+                            <a href="./projects?projectUrl=/pages/cm2305.json">
+                                A Personal Security System for a Night Time Economy{' '}
+                            </a>{' '}
+                            - Grade: 86%
+                            <br />
+                            <a href="./projects?projectUrl=/pages/cm3203.json">
+                                Automated Cyber Defence Through Reinforcement Learning{' '}
+                            </a>{' '}
+                            - Grade: 80%
+                        </Collapsible>
                     </Timeline.Event>
                 </Timeline>
 
@@ -114,8 +127,38 @@ export function About() {
                 </h2>
 
                 <Timeline>
-                    <Timeline.Event>
+                    <Timeline.Event date="Sept. 2024 - March 2025">
+                        <hr />
                         <h3> Software Engineer @ Copner Biotech</h3>
+                        Hired to create next-generation CAD software for in-house 3D &amp; 4D
+                        Bioprinters, targeting their proprietary GRAPE data modelling format, this
+                        software was intended to replace their existing solution. I was be the sole
+                        developer on this project.
+                        <p>
+                            <b>Backend: Node.js, Express, OS agnostic</b>
+                            <br />
+                            Solution was designed to maximise portability and minimise maintenance
+                            and upkeep by designing a cross-platform solution based on a Node.js
+                            &amp; Express Web Server. The web server hosted either on Localhost or
+                            over a LAN enables any client on the network to access the software
+                            without any setup on the part of the user.
+                        </p>
+                        <p>
+                            <b>Frontend: JavaScript, HTML+CSS ,Vue.js, Three.js, Pinia</b>
+                            <br />
+                            Solution designed as an SPA, utilising Three.js as the environment for
+                            modelling shapes and converting to the GRAPE format. Vue.js was used as
+                            the frontend framework to dramatically simplify workload in developing
+                            the solution, creating a intuitive, low-latency, interface. <br /> The
+                            solution empowered the user to first create, modify, merge, and deleete
+                            traditional polygonal meshes before voxelising the mesh to convert to
+                            GRAPE. This was superior to the existing solution, which modified GRAPE
+                            directly and therefore only allowed the creation and manipulation of
+                            cuboids.
+                        </p>
+                        <p>
+                            <b> Reference for this role available on request</b>
+                        </p>
                     </Timeline.Event>
                 </Timeline>
 
@@ -123,9 +166,47 @@ export function About() {
                     id={pageSections[2].id}
                     ref={(el) => (sectionRefs.current[pageSections[2].id] = el)}
                 >
-                    {' '}
-                    {pageSections[2].label}{' '}
+                    {pageSections[2].label}
                 </h2>
+
+                <table>
+                    <tr>
+                        <th align="left" className="label">
+                            Type
+                        </th>
+                        <th align="left" className="data">
+                            Skills
+                        </th>
+                    </tr>
+                    <tr>
+                        <td className="label">Langauges</td>
+                        <td className="data"> Python, Java, JavaScript, HTML+CSS, SQL, Bash</td>
+                    </tr>
+                    <tr>
+                        <td className="label">Frameworks</td>
+                        <td className="data"> Vue.js, React, Stable Baselines 3, PyTorch</td>
+                    </tr>
+                    <tr>
+                        <td className="label">Libraries</td>
+                        <td className="data"> Three.js, Numpy, OpenCV</td>
+                    </tr>
+                    <tr>
+                        <td className="label">Databases</td>
+                        <td className="data"> MongoDB </td>
+                    </tr>
+                    <tr>
+                        <td className="label">Tools</td>
+                        <td className="data">Git, Node</td>
+                    </tr>
+                    <tr>
+                        <td className="label">Operating Systems</td>
+                        <td className="data">Linux, Microsoft Windows (Not certified)</td>
+                    </tr>
+                    <tr className="lastrow">
+                        <td className="label">Other</td>
+                        <td className="data"> HTTP APIs </td>
+                    </tr>
+                </table>
             </div>
         </>
     )

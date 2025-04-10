@@ -8,6 +8,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import Card from '!components/cards'
 
 import BackIcon from '!assets/icons/arrow_back_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg?react'
+import BoltIcon from '!assets/icons/bolt_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg?react'
 
 const projectImportUrl = createContext(null)
 

@@ -19,32 +19,54 @@ body {
     background-color: var(--md-sys-color-surface-container-lowest);
 }
 
-hr {
-    border: 0.1px solid var(--md-sys-color-outline-variant);
+a {
+    transition: color 0.1s;
+    color: var(--md-sys-color-secondary);
+    text-decoration-color: var(--md-sys-color-secondary);
 }
 
-.navDest {
+a:visited {
+    color: var(--md-sys-color-tertiary);
+    text-decoration-color: var(--md-sys-color-tertiary);
+}
+
+a:hover {
+    color: var(--md-sys-color-primary);
+    text-decoration-color: var(--md-sys-color-primary);
+}
+
+a:hover {
+    color: var(--md-sys-color-primary);
+    text-decoration-color: var(--md-sys-color-on-surface-variant);
+}
+
+hr {
+    border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+a.navDest {
     display: block;
     text-decoration: none;
     padding: 5px 10px 5px 10px;
     border-radius: 0.5em;
     margin-top: 5px;
+    color: var(--md-sys-color-on-surface);
     transition:
         color 0.1s,
         background-color 0.1s,
         filter 0.1s;
 }
 
-.navDest:hover {
+a.navDest:hover {
     background-color: var(--md-sys-color-surface-bright);
     color: var(--md-sys-color-on-surface-variant);
 }
 
-.navDest:active {
+a.navDest:active {
     filter: brightness(90%);
 }
 
-.navDest.active {
+a.navDest.active {
     background-color: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
 }
@@ -302,4 +324,39 @@ a.hidedecos {
     margin-bottom: 5px;
     align-content: center;
     color: var(--md-sys-color-on-secondary-container);
+}
+
+table {
+    font-size: 13pt;
+    width: 100%;
+    background-color: var(--md-sys-color-surface-container-high);
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 0.25em;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+th {
+    padding: 10px;
+    padding-left: 10px;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+td {
+    padding: 10px;
+    padding-left: 10px;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+tr.lastrow td {
+    border-bottom: 0px;
+}
+
+tr {
+    width: 3em;
+}
+
+td.label {
+    width: 300px;
 }
