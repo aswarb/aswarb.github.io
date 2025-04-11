@@ -9,11 +9,12 @@
     position: absolute;
     transition: border 0.3s;
     overflow: hidden;
+    transform: translate(-50%, -50%);
 }
 
 .buttonContainer * {
-    color: var(--md-sys-color-on-surface);
-    fill: var(--md-sys-color-on-surface);
+    color: var(--md-sys-color-on-surface-variant);
+    fill: var(--md-sys-color-on-surface-variant);
 }
 .buttonContainer svg {
     display: block;

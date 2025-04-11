@@ -56,7 +56,7 @@ function NavBar() {
                         <a href="https://github.com/aswarb">Github</a>
                     </div>
                 </div>
-                <div style={{ position: 'absolute', bottom: '50px', left: '50%', right: '50%' }}>
+                <div style={{ marginTop: 'auto', marginBottom: '40px' }}>
                     <DarkModeToggle
                         initialMode="light"
                         toggleCallback={function (event) {
