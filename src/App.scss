@@ -3,6 +3,8 @@
 #root {
     width: 100vw;
     height: 100vh;
+    color: var(--md-sys-color-on-surface);
+    background-color: var(--md-sys-color-surface-container-lowest);
 }
 
 :root * {
@@ -15,8 +17,6 @@ body {
     padding: 0px;
     margin: 0px;
     overflow: hidden;
-    color: var(--md-sys-color-on-surface);
-    background-color: var(--md-sys-color-surface-container-lowest);
 }
 
 a {

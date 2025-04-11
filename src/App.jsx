@@ -9,12 +9,14 @@ import { Contact } from '!pages/contact.jsx'
 import { Link, useLocation } from 'react-router-dom'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
+import { DarkModeToggle } from '!components/darkModeToggle'
+
 function NavBar() {
     const location = useLocation()
 
     return (
         <>
-            <div className="navRail">
+            <div className="navRail" style={{ position: 'relative' }}>
                 <div className="navSection">
                     <Link to="/" className={`navDest ${location.pathname === '/' ? 'active' : ''}`}>
                         Home
@@ -54,6 +56,14 @@ function NavBar() {
                         <a href="https://github.com/aswarb">Github</a>
                     </div>
                 </div>
+                <div style={{ position: 'absolute', bottom: '50px', left: '50%', right: '50%' }}>
+                    <DarkModeToggle
+                        initialMode="light"
+                        toggleCallback={function (event) {
+                            document.getElementById('root').classList.toggle('dark')
+                        }}
+                    />
+                </div>
             </div>
         </>
     )
@@ -64,6 +74,8 @@ function Content({ children }) {
 }
 
 function App() {
+    const rootElement = document.getElementById('root')
+
     return (
         <Router>
             <div className="pageGrid">

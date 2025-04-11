@@ -1,0 +1,49 @@
+@use '!src/themes.scss';
+
+.buttonContainer {
+    border: 2px solid var(--md-sys-color-outline);
+    border-radius: 2em;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+    position: absolute;
+    transition: border 0.3s;
+    overflow: hidden;
+}
+
+.buttonContainer * {
+    color: var(--md-sys-color-on-surface);
+    fill: var(--md-sys-color-on-surface);
+}
+.buttonContainer svg {
+    display: block;
+}
+
+.svcontainer {
+    position: relative;
+}
+.fade-enter {
+    transform: translateY(50px);
+    position: relative;
+    opacity: 0;
+}
+.fade-enter-active {
+    opacity: 1;
+    transform: translateY(-0px);
+    transition:
+        opacity 0.3s,
+        transform 0.3s ease-out;
+}
+
+.fade-exit {
+    opacity: 1;
+    position: absolute;
+    transform: translateY(0px);
+}
+.fade-exit-active {
+    opacity: 0;
+    transform: translateY(-50px);
+    transition:
+        opacity 0.3s,
+        transform 0.3s ease-in;
+}

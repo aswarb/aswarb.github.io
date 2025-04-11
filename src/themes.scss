@@ -1,6 +1,15 @@
 @use 'color-themes/dark.scss' as dark;
 @use 'color-themes/light.scss' as light;
 
+#root:not(.dark) {
+    @include light.light;
+}
+
+#root.dark {
+    @include dark.dark;
+}
+
+/*
 @media (prefers-color-scheme: light) {
     body {
         @include light.light;
@@ -10,4 +19,4 @@
     body {
         @include dark.dark;
     }
-}
+}*/
