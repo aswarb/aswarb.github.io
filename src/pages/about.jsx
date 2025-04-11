@@ -1,15 +1,47 @@
 import Collapsible from '!components/collapsible'
-import style from './about.module.css?module'
-import * as projectMap from '!assets/project-mapping.json'
 import { useRef, useState, useEffect } from 'react'
 
 import Timeline from '!components/timeline'
+import style from './about.module.css?module'
 
 const pageSections = [
     { id: 'education', label: 'Education' },
     { id: 'experience', label: 'Experience' },
     { id: 'skills', label: 'Skills' },
 ]
+
+function ShortCutWidget({ activeSection }) {
+    const callback = (id) => {
+        console.log(id)
+        console.log(document.getElementById(id))
+        document.getElementById(id).scrollIntoView({ block: 'center', inline: 'nearest' })
+    }
+
+    return (
+        <div className="widget rightanchor verticalcenter shortcutBox">
+            <ul className="nobullets">
+                {pageSections.map((section) => {
+                    return (
+                        <li key={section.id}>
+                            <a
+                                className={
+                                    'hidedecos ' + (section.id === activeSection ? 'active' : '')
+                                }
+                                href={'./about#' + section.id}
+                                onClick={(e) => {
+                                    console.log(section.id)
+                                    callback(section.id)
+                                }}
+                            >
+                                {section.label}
+                            </a>
+                        </li>
+                    )
+                })}
+            </ul>
+        </div>
+    )
+}
 
 export function About() {
     const [activeSection, setActiveSection] = useState(null)
@@ -24,10 +56,11 @@ export function About() {
                 const sortedEntries = filteredEntries.sort(
                     (entry) => scrollY - entry.target.offsetTop / parent.scrollHeight - 0.4,
                 )
-                setActiveSection(sortedEntries[0].target.id)
-                console.log(activeSection)
+                if (sortedEntries.length) {
+                    setActiveSection(sortedEntries[0].target.id)
+                }
             },
-            { threshold: 0.1, rootMargin: '0px' },
+            { threshold: 0.4, rootMargin: '0px' },
         )
         pageSections.forEach((section) => {
             if (sectionRefs.current[section.id]) {
@@ -48,38 +81,14 @@ export function About() {
         return () => parent.addEventListener('scroll', onScroll)
     })
 
-    const callback = (id) => {
-        document.getElementById(id).scrollIntoView({ block: 'center', inline: 'nearest' })
-    }
-
     return (
         <>
             <div className="leftcol">
-                <div className="widget rightanchor verticalcenter shortcutBox">
-                    <ul className="nobullets">
-                        {pageSections.map((section) => {
-                            return (
-                                <li key={section.id}>
-                                    <a
-                                        className={
-                                            'hidedecos ' +
-                                            (section.id === activeSection ? 'active' : '')
-                                        }
-                                        //href={'./about#' + section.id}
-                                        onClick={(e) => {
-                                            callback(section.id)
-                                        }}
-                                    >
-                                        {section.label}
-                                    </a>
-                                </li>
-                            )
-                        })}
-                    </ul>
-                </div>
+                <ShortCutWidget activeSection={activeSection} />
             </div>
             <div id="content" className="content">
                 <h1>About</h1>
+                <hr />
                 <div
                     id={pageSections[0].id}
                     key={pageSections[0].id}

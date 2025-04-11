@@ -161,6 +161,10 @@ a.navDest.active {
     font-size: 13pt;
 }
 
+.widget * {
+    user-select: none;
+}
+
 ul {
     padding-left: 20px;
 }
@@ -183,6 +187,13 @@ a.hidedecos {
     padding-left: 5px;
     border-radius: 0.25em;
     cursor: pointer;
+}
+
+.widget.shortcutBox li a {
+    display: block;
+    width: 100%;
+
+    color: var(--md-sys-color-on-surface-variant);
 }
 
 .widget.shortcutBox li:hover {
