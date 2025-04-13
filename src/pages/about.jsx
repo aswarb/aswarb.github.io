@@ -1,4 +1,6 @@
 import Collapsible from '!components/collapsible'
+
+import { Link } from 'react-router-dom'
 import { useRef, useState, useEffect } from 'react'
 
 import Timeline from '!components/timeline'
@@ -113,14 +115,14 @@ export function About() {
                             <h4> Degree Classification: 2:1</h4>
                             <Collapsible title="Projects">
                                 <div className=""> </div>
-                                <a href="./projects?projectUrl=/pages/cm2305.json">
+                                <Link to="/projects/?projectUrl=/pages/cm2305.json">
                                     A Personal Security System for a Night Time Economy{' '}
-                                </a>{' '}
+                                </Link>
                                 - Grade: 86%
                                 <br />
-                                <a href="./projects?projectUrl=/pages/cm3203.json">
+                                <Link to="/projects/?projectUrl=/pages/cm3203.json">
                                     Automated Cyber Defence Through Reinforcement Learning{' '}
-                                </a>{' '}
+                                </Link>
                                 - Grade: 80%
                             </Collapsible>
                         </Timeline.Event>
