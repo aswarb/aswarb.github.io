@@ -7,9 +7,7 @@ import LightIcon from '!assets/icons/light_mode_48dp_E3E3E3_FILL1_wght400_GRAD0_
 import DarkIcon from '!assets/icons/dark_mode_48dp_E3E3E3_FILL1_wght400_GRAD0_opsz48.svg?react'
 
 export default function Toggle({ toggleCallback, initialMode }) {
-    console.log(initialMode)
     const [state, setState] = useState(initialMode)
-    console.log(state)
 
     const lightRef = useRef(null)
     const darkRef = useRef(null)

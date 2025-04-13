@@ -11,6 +11,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import { DarkModeToggle } from '!components/darkModeToggle'
 
+const LOCALSTORAGE_DARKMODE_KEY = 'aswarb.github.io-darkmode'
+
 function NavBar() {
     const location = useLocation()
 
@@ -58,9 +60,19 @@ function NavBar() {
                 </div>
                 <div style={{ marginTop: 'auto', marginBottom: '40px' }}>
                     <DarkModeToggle
-                        initialMode="light"
+                        initialMode={
+                            localStorage.getItem(LOCALSTORAGE_DARKMODE_KEY) === 'true'
+                                ? 'dark'
+                                : 'light'
+                        }
                         toggleCallback={function (event) {
-                            document.getElementById('root').classList.toggle('dark')
+                            const rootElement = document.getElementById('root')
+                            rootElement.classList.toggle('dark')
+                            if (rootElement.classList.value.includes('dark')) {
+                                localStorage.setItem(LOCALSTORAGE_DARKMODE_KEY, true)
+                            } else {
+                                localStorage.setItem(LOCALSTORAGE_DARKMODE_KEY, false)
+                            }
                         }}
                     />
                 </div>
@@ -74,7 +86,10 @@ function Content({ children }) {
 }
 
 function App() {
-    const rootElement = document.getElementById('root')
+    const darkmodeEnable = localStorage.getItem(LOCALSTORAGE_DARKMODE_KEY)
+    if (darkmodeEnable === 'true') {
+        document.getElementById('root').classList.add('dark')
+    }
 
     return (
         <Router>
