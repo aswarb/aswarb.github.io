@@ -58,7 +58,14 @@ function NavBar() {
                         <a href="https://github.com/aswarb">Github</a>
                     </div>
                 </div>
-                <div style={{ marginTop: 'auto', marginBottom: '40px' }}>
+                <div
+                    style={{
+                        marginBottom: '40px',
+                        position: 'absolute',
+                        bottom: '0px',
+                        left: '50%',
+                    }}
+                >
                     <DarkModeToggle
                         initialMode={
                             localStorage.getItem(LOCALSTORAGE_DARKMODE_KEY) === 'true'
