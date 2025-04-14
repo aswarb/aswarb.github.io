@@ -20,4 +20,77 @@
     z-index: 11;
     left: 50%;
     top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.text {
+    font-size: 14pt;
+}
+.header {
+    font-size: 17pt;
+}
+
+.rowLayout {
+  display:flex;
+}
+
+
+.leftItem {
+margin-right: auto;
+}
+
+.rightItem {
+margin-left:auto;
+}
+
+.leftItem:not(.button) {
+  
+  margin-left:45px;
+}
+
+.rightItem:not(.button) {
+  
+  margin-right:45px;
+}
+.card {
+width:400px;
+  background-color:var(--md-sys-color-surface-container-lowest);
+}
+
+.cvLink {
+
+  text-decoration:none;
+}
+
+.button {
+  margin-top:15px;
+  width:fit-content;
+  cursor:pointer;
+  padding:6px;
+  padding-left:10px;
+  padding-right:10px;
+  border-radius:0.30em;
+}
+
+.downloadButton {
+  
+
+  background-color:var(--md-sys-color-primary-container);
+  color:var(--md-sys-color-on-primary-container);
+}
+
+.button:hover {
+  filter:brightness(90%);
+}
+
+.button:active {
+
+  filter:brightness(85%);
+}
+
+.exitButton {
+    border: 1px solid var(--md-sys-color-outline);
+    color:var(--md-sys-color-on-primary-container);
+    background-color:var(--md-sys-color-surface-container-lowest)
+
 }
