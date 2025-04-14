@@ -4,11 +4,13 @@ import { Home } from '!pages/home.jsx'
 import { About } from '!pages/about.jsx'
 import { Projects } from '!pages/projects.jsx'
 import { Leetcode } from '!pages/leetcode.jsx'
-import { Contact } from '!pages/contact.jsx'
 
 import { Link, useLocation } from 'react-router-dom'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
+import { StateContextProvider, useStateContext } from '!src/context.jsx'
+
+import ContactCard from '!components/ContactCard'
 import { DarkModeToggle } from '!components/darkModeToggle'
 
 const LOCALSTORAGE_DARKMODE_KEY = 'aswarb.github.io-darkmode'
@@ -40,12 +42,6 @@ function NavBar() {
                         className={`navDest ${location.pathname === '/leetcode' ? 'active' : ''}`}
                     >
                         LeetCode
-                    </Link>
-                    <Link
-                        to="/contact"
-                        className={`navDest ${location.pathname === '/contact' ? 'active' : ''}`}
-                    >
-                        Contact
                     </Link>
                 </div>
                 <div className="navSection">
@@ -92,36 +88,52 @@ function Content({ children }) {
     return <div className="contentBox"> {children} </div>
 }
 
-function App() {
+function PageGrid() {
     const darkmodeEnable = localStorage.getItem(LOCALSTORAGE_DARKMODE_KEY)
     if (darkmodeEnable === 'true') {
         document.getElementById('root').classList.add('dark')
     }
 
+    const context = useStateContext()
+
+    const hideContactCallback = () => {
+        context.setIsOpen(!context.isOpen)
+    }
+
+    return (
+        <div className="pageGrid">
+            <ContactCard isShown={context.isOpen} hideSelfCallback={hideContactCallback} />
+            <div className="emptyDiv"> </div>
+            <div className="titlebar">
+                <div className="namePlate">
+                    <div> Andrew Swarbrick </div>
+                    <div> Developer Portfolio</div>
+                </div>
+            </div>
+
+            <NavBar />
+            <Content>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/projects/?projectUrl=?" element={<Projects />} />
+                    <Route path="/leetcode" element={<Leetcode />} />
+                </Routes>
+            </Content>
+        </div>
+    )
+}
+
+function App() {
     return (
         <Router>
-            <div className="pageGrid">
-                <div className="emptyDiv"> </div>
-                <div className="titlebar">
-                    <div className="namePlate">
-                        <div> Andrew Swarbrick </div>
-                        <div> Developer Portfolio</div>
-                    </div>
-                </div>
-
-                <NavBar />
-                <Content>
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/about" element={<About />} />
-                        <Route path="/projects/?projectUrl=?" element={<Projects />} />
-                        <Route path="/leetcode" element={<Leetcode />} />
-                        <Route path="/contact" element={<Contact />} />
-                    </Routes>
-                </Content>
-            </div>
+            <StateContextProvider>
+                <PageGrid />
+            </StateContextProvider>
         </Router>
     )
 }
+
+function ContextWrapper({ children }) {}
 
 export default App

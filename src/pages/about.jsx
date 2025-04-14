@@ -14,8 +14,6 @@ const pageSections = [
 
 function ShortCutWidget({ activeSection }) {
     const callback = (id) => {
-        console.log(id)
-        console.log(document.getElementById(id))
         document.getElementById(id).scrollIntoView({ block: 'center', inline: 'nearest' })
     }
 
@@ -50,7 +48,9 @@ export function About() {
     useEffect(() => {
         const hash = location.hash
         if (hash != '') {
-            document.getElementById(hash.replace('#', '')).scrollIntoView()
+            document
+                .getElementById(hash.replace('#', ''))
+                .scrollIntoView({ block: 'center', inline: 'nearest' })
         }
     }, [location.hash])
 
@@ -64,7 +64,7 @@ export function About() {
             (entries) => {
                 const filteredEntries = entries.filter((entry) => entry.isIntersecting)
                 const sortedEntries = filteredEntries.sort(
-                    (entry) => scrollY - entry.target.offsetTop / parent.scrollHeight - 0.4,
+                    (entry) => scrollY - entry.target.offsetTop / parent.scrollHeight - 0.45,
                 )
                 if (sortedEntries.length) {
                     setActiveSection(sortedEntries[0].target.id)
@@ -170,7 +170,7 @@ export function About() {
                                 used as the frontend framework to dramatically simplify workload in
                                 developing the solution, creating a intuitive, low-latency,
                                 interface. <br /> The solution empowered the user to first create,
-                                modify, merge, and deleete traditional polygonal meshes before
+                                modify, merge, and delete traditional polygonal meshes before
                                 voxelising the mesh to convert to GRAPE. This was superior to the
                                 existing solution, which modified GRAPE directly and therefore only
                                 allowed the creation and manipulation of cuboids.
