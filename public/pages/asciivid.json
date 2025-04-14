@@ -6,7 +6,7 @@
 "Used OpenCV, Numpy for image processing, Pygame, FFmpeg for audio",
 "Developed on & off in spare time"
 ],
-    "links": {},
+    "links": [],
     "sections": [
         {
             "type": "plaintext",

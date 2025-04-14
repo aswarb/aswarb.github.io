@@ -3,6 +3,8 @@
 #root {
     width: 100vw;
     height: 100vh;
+    color: var(--md-sys-color-on-surface);
+    background-color: var(--md-sys-color-surface-container-lowest);
 }
 
 :root * {
@@ -15,36 +17,56 @@ body {
     padding: 0px;
     margin: 0px;
     overflow: hidden;
-    color: var(--md-sys-color-on-surface);
-    background-color: var(--md-sys-color-surface-container-lowest);
+}
+
+a {
+    transition: color 0.1s;
+    color: var(--md-sys-color-secondary);
+    text-decoration-color: var(--md-sys-color-secondary);
+}
+
+a:visited {
+    color: var(--md-sys-color-tertiary);
+    text-decoration-color: var(--md-sys-color-tertiary);
+}
+
+a:hover {
+    color: var(--md-sys-color-primary);
+    text-decoration-color: var(--md-sys-color-primary);
+}
+
+a:hover {
+    color: var(--md-sys-color-primary);
+    text-decoration-color: var(--md-sys-color-on-surface-variant);
 }
 
 hr {
-    border: 0.1px solid var(--md-sys-color-outline-variant);
+    border: 1px solid var(--md-sys-color-outline-variant);
 }
 
-.navDest {
+a.navDest {
     display: block;
     text-decoration: none;
     padding: 5px 10px 5px 10px;
     border-radius: 0.5em;
     margin-top: 5px;
+    color: var(--md-sys-color-on-surface);
     transition:
         color 0.1s,
         background-color 0.1s,
         filter 0.1s;
 }
 
-.navDest:hover {
+a.navDest:hover {
     background-color: var(--md-sys-color-surface-bright);
     color: var(--md-sys-color-on-surface-variant);
 }
 
-.navDest:active {
+a.navDest:active {
     filter: brightness(90%);
 }
 
-.navDest.active {
+a.navDest.active {
     background-color: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
 }
@@ -139,6 +161,10 @@ hr {
     font-size: 13pt;
 }
 
+.widget * {
+    user-select: none;
+}
+
 ul {
     padding-left: 20px;
 }
@@ -163,6 +189,13 @@ a.hidedecos {
     cursor: pointer;
 }
 
+.widget.shortcutBox li a {
+    display: block;
+    width: 100%;
+
+    color: var(--md-sys-color-on-surface-variant);
+}
+
 .widget.shortcutBox li:hover {
     background-color: var(--md-sys-color-surface-container-high);
 }
@@ -173,7 +206,7 @@ a.hidedecos {
 
 .widget.shortcutBox li:has(a.active) {
     background-color: var(--md-sys-color-surface-container-high);
-    border-bottom: 1px solid var(--md-sys-color-primary-container);
+    border-bottom: 1px solid var(--md-sys-color-primary);
     color: var(--md-sys-color-primary);
 }
 
@@ -302,4 +335,39 @@ a.hidedecos {
     margin-bottom: 5px;
     align-content: center;
     color: var(--md-sys-color-on-secondary-container);
+}
+
+table {
+    font-size: 13pt;
+    width: 100%;
+    background-color: var(--md-sys-color-surface-container-high);
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 0.25em;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+th {
+    padding: 10px;
+    padding-left: 10px;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+td {
+    padding: 10px;
+    padding-left: 10px;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+tr.lastrow td {
+    border-bottom: 0px;
+}
+
+tr {
+    width: 3em;
+}
+
+td.label {
+    width: 300px;
 }

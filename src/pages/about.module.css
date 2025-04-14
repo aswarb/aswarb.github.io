@@ -1,0 +1,5 @@
+@use '!src/themes.scss';
+
+.aboutSummaryCard {
+    width: 100%;
+}

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import style from './collapsible.module.scss?module'
-;('../../assets/icons/arrow_drop_down_48dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.svg')
 import DownIcon from '!assets/icons/arrow_drop_down_48dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.svg?react'
 
 export default function Collapsible({ title, children }) {

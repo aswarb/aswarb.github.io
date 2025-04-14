@@ -1,8 +1,9 @@
 @use '!src/themes.scss';
 
 .title {
-    background-color: var(--md-sys-color-secondary-container);
-    color: var(--md-sys-color-on-secondary-container);
+    background-color: var(--md-sys-color-surface-container-high);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    color: var(--md-sys-color-on-surface-variant);
     border-radius: 0.5em;
     font-size: 14pt;
     padding: 5px;
@@ -19,8 +20,9 @@
 }
 
 .content {
+    border: 0px solid var(--md-sys-color-outline-variant);
+    color: var(--md-sys-color-on-surface-variant);
     width: 99%;
-    color: var(--md-sys-color-on-secondary-container);
     max-height: 0px;
     border-radius: 0.5em;
     overflow: hidden;
@@ -32,15 +34,16 @@
     font-size: 0pt;
     transition:
         max-height 0.1s,
-        font-size 0.1s;
+        font-size 0.1s,
+        border 0.1s;
 }
 
 .content.active {
     max-height: 540px;
-    background-color: var(--md-sys-color-secondary-container);
     font-size: 12pt;
     padding-left: 10px;
-    filter: brightness(110%);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    background-color: var(--md-sys-color-surface-container-high);
 }
 
 .svgArrow {
