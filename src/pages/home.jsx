@@ -3,8 +3,14 @@ import style from '!pages/home.module.scss?modules'
 import * as projectMap from '!assets/project-mapping.json'
 import Card from '!components/cards'
 import { Link } from 'react-router-dom'
+
+import { useStateContext } from '!src/context.jsx'
+
 export function Home() {
     console.log(projectMap)
+
+    const context = useStateContext()
+
     return (
         <div className={'content ' + style.container}>
             <div className={style.section}>
@@ -49,9 +55,14 @@ export function Home() {
             <div className={[style.section, style.centredBlock].join(' ')}>
                 <div>
                     Looking to hire? I'm open for work <span className={style.rarr}> &rarr; </span>
-                    <Link to="/contact" className={style.textHighEmph}>
+                    <div
+                        className={style.textHighEmph}
+                        onClick={() => {
+                            context.setIsOpen(!context.isOpen)
+                        }}
+                    >
                         Find contact details
-                    </Link>
+                    </div>
                 </div>
             </div>
         </div>
