@@ -1,0 +1,59 @@
+@use '!src/themes.scss';
+
+.container {
+    height: fit-content;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.section {
+    display: block;
+    width: 100%;
+    height: fit-content;
+}
+
+.section > * {
+    margin: 10px;
+    margin-left: 20px;
+    width: fit-content;
+    display: block;
+}
+
+.section .title {
+    font-size: 25pt;
+}
+
+.navArea {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+
+.navCard {
+    width: 100%;
+    flex: 1;
+    margin: 5px;
+    cursor: default;
+    border-radius: 0.25em;
+    padding: 5px;
+    background-color: var(--md-sys-color-surface-container-high);
+}
+
+.textHighEmph {
+    font-weight: 600;
+    font-size: 14pt;
+    margin-left: 5px;
+}
+
+.rarr {
+    font-size: 16pt;
+    margin-top: 5px;
+}
+
+.centredBlock {
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}

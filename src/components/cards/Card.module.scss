@@ -1,14 +1,11 @@
 @use '!src/themes.scss';
 
 .card {
-    width: 18.5em;
-    height: 18em;
     background-color: var(--md-sys-color-surface-container-high);
     text-wrap: wrap;
     border-radius: 0.5em;
     display: inline-block;
     margin: 5px;
-    cursor: pointer;
     overflow: hidden;
     text-decoration: none;
     padding-bottom: 10px;
@@ -17,6 +14,10 @@
     transition:
         filter 0.1s,
         box-shadow 0.05s;
+}
+
+.card.clickable {
+    cursor: pointer;
 }
 
 .card > *:not(.media) {
@@ -49,11 +50,11 @@
     font-size: 11pt;
 }
 
-.card:hover {
+.card.hoverEffects:hover {
     filter: brightness(90%);
     box-shadow: 0px 1px 1px var(--md-sys-color-shadow);
 }
 
-.card:active {
+.card.activeEffects:active {
     filter: brightness(90%);
 }

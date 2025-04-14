@@ -6,6 +6,9 @@ import React, { useCallback, createContext, useContext, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 
 import Card from '!components/cards'
+import CardStyle from '!components/cards/Card.module.scss?modules'
+
+import projectStyle from '!pages/projects.module.scss?modules'
 
 import BackIcon from '!assets/icons/arrow_back_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg?react'
 import BoltIcon from '!assets/icons/bolt_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg?react'
@@ -23,7 +26,14 @@ function ProjectCard({ thumbnail, title, shortDescription, link }) {
     console.log(thumbnail)
     return (
         <Link to={'/projects/?projectUrl=' + link}>
-            <Card>
+            <Card
+                classNames={[
+                    CardStyle.clickable,
+                    CardStyle.hoverEffects,
+                    CardStyle.activeEffects,
+                    projectStyle.projectCard,
+                ]}
+            >
                 <Card.Media src={thumbnail} alt="Card Thumbnail" />
                 <Card.Header>{title}</Card.Header>
                 <Card.Content>{shortDescription}</Card.Content>
@@ -72,7 +82,7 @@ function ProjectQuicknotes({ noteArray }) {
         <div className="quicknotes-container">
             <div className="title">
                 <BoltIcon className="svgIcon" height="1em" width="1em" style={{ fill: 'yellow' }} />{' '}
-                Quicknotes{' '}
+                Quicknotes
             </div>
             <div className="quicknotes">
                 <ul>{notes}</ul>

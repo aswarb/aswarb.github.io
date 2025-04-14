@@ -1,9 +1,8 @@
 import style from './Card.module.scss?modules'
 
-console.log(style)
-
-export default function Card({ children }) {
-    return <div className={style.card}>{children}</div>
+export default function Card({ classNames = [], children }) {
+    console.log(classNames)
+    return <div className={style.card + ' ' + classNames.join(' ')}>{children}</div>
 }
 
 Card.Header = function CardHeader({ children }) {
