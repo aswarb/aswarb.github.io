@@ -1,6 +1,6 @@
 import Collapsible from '!components/collapsible'
 
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useRef, useState, useEffect } from 'react'
 
 import Timeline from '!components/timeline'
@@ -46,6 +46,14 @@ function ShortCutWidget({ activeSection }) {
 }
 
 export function About() {
+    const location = useLocation()
+    useEffect(() => {
+        const hash = location.hash
+        if (hash != '') {
+            document.getElementById(hash.replace('#', '')).scrollIntoView()
+        }
+    }, [location.hash])
+
     const [activeSection, setActiveSection] = useState(null)
     const [scrollY, setScrollY] = useState(0)
     const sectionRefs = useRef({})
@@ -60,6 +68,9 @@ export function About() {
                 )
                 if (sortedEntries.length) {
                     setActiveSection(sortedEntries[0].target.id)
+                    if (sortedEntries[0].target.id != activeSection) {
+                        window.history.pushState(null, '', `#${sortedEntries[0].target.id}`)
+                    }
                 }
             },
             { threshold: 0.4, rootMargin: '0px' },
