@@ -2,18 +2,21 @@
     "projects": [
         {
             "title": "AsciiVid",
+            "lastEditDate": "2025-04-15",
             "thumbnail": "/thumbnails/asciivid-thumbnail.png",
             "shortDescription": "Raster video + images to ASCII art. Written in Python",
             "fullContentLink": "/pages/asciivid.json"
         },
         {
             "title": "A Personal Security System for a Night Time Econonmy",
+            "lastEditDate": "2025-04-15",
             "thumbnail": "/thumbnails/cm2305-thumbnail.png",
             "shortDescription": "Android Application written as part of degree. MongoDB + HTTP API + Flask web server + Android.",
             "fullContentLink": "/pages/cm2305.json"
         },
         {
             "title": "Automated Cyber Defence With Deep Reinforcement Learning",
+            "lastEditDate": "2025-04-15",
             "thumbnail": "/thumbnails/cm3203-thumbnail.png",
             "shortDescription": "Degree Thesis. PPO models created with PyTorch compared in the CybORG Gym Environment.",
             "fullContentLink": "/pages/cm3203.json"

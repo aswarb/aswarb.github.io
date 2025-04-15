@@ -11,6 +11,9 @@ export function Home() {
 
     const context = useStateContext()
 
+    const projects = projectMap.projects.sort((project) => project.lastEditDate)
+    const shownProjects = projects.length > 3 ? projects.slice(0, 3) : projects
+    console.log(shownProjects)
     return (
         <div className={'content ' + style.container}>
             <div className={style.section}>
@@ -18,7 +21,7 @@ export function Home() {
                 <div className={style.main}> Feel free to explore </div>
             </div>
             <div className={style.section + ' ' + style.navArea}>
-                <Card classNames={[style.navCard]}>
+                <Card classNames={[style.navCard, style.fixedWidth]}>
                     <Card.Header> About </Card.Header>
                     <Card.Content>
                         <ul>
@@ -41,10 +44,24 @@ export function Home() {
                             {projectMap.projects.length} projects waiting for you{' '}
                             <Link to="/projects"> here! </Link>
                         </p>
-                        <p>Most Recent Changes: TBA</p>
+                        Most Recent Changes:
+                        <ul>
+                            {shownProjects.map((element, index) => {
+                                return (
+                                    <li key={index}>
+                                        {element.lastEditDate} -{' '}
+                                        <Link
+                                            to={'/projects/?projectUrl=' + element.fullContentLink}
+                                        >
+                                            {element.title}
+                                        </Link>
+                                    </li>
+                                )
+                            })}
+                        </ul>
                     </Card.Content>
                 </Card>
-                <Card classNames={[style.navCard]}>
+                <Card classNames={[style.navCard, style.fixedWidth]}>
                     <Card.Header> Leetcode </Card.Header>
                     <Card.Content>
                         TBA. Will come with development of{' '}

@@ -28,22 +28,44 @@ export default function ContactCard({
                         </div>
                         <div className={style.rowLayout}>
                             <div className={style.leftItem}>LinkedIn</div>
-                            <div className={style.rightItem}> <a href="https://www.linkedin.com/in/andrew-swarbrick-a04314261/">Click here</a> </div>
+                            <div className={style.rightItem}>
+                                {' '}
+                                <a href="https://www.linkedin.com/in/andrew-swarbrick-a04314261/">
+                                    Click here
+                                </a>{' '}
+                            </div>
                         </div>
                         <div className={style.rowLayout}>
                             <div className={style.leftItem}>Github</div>
-                            <div className={style.rightItem}> <a href="https://github.com/aswarb">Click here</a> </div>
+                            <div className={style.rightItem}>
+                                {' '}
+                                <a href="https://github.com/aswarb">Click here</a>{' '}
+                            </div>
                         </div>
-                                            </Card.Content>
+                    </Card.Content>
                     <Card.Footer classNames={[style.text]}>
-<div className={style.rowLayout}>
-                            <div className={[style.exitButton, style.button, style.leftItem].join(' ')} onClick={hideSelfCallback}>Close</div>
-                            <a href='CV.pdf' className={style.cvLink}><div className={[style.downloadButton, style.button, style.rightItem].join(' ')}>
-				View CV
-                            </div></a>
+                        <div className={style.rowLayout}>
+                            <div
+                                className={[style.exitButton, style.button, style.leftItem].join(
+                                    ' ',
+                                )}
+                                onClick={hideSelfCallback}
+                            >
+                                Close
+                            </div>
+                            <a href="CV.pdf" className={style.cvLink}>
+                                <div
+                                    className={[
+                                        style.downloadButton,
+                                        style.button,
+                                        style.rightItem,
+                                    ].join(' ')}
+                                >
+                                    View CV
+                                </div>
+                            </a>
                         </div>
-
-	</Card.Footer>
+                    </Card.Footer>
                 </Card>
             </div>
         </div>
