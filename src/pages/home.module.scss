@@ -24,6 +24,11 @@
     font-size: 25pt;
 }
 
+.leftOffset {
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
 .navArea {
     display: flex;
     flex-direction: row;
@@ -65,4 +70,18 @@
     flex-shrink: 0;
     flex-grow: 0;
     flex-basis: auto;
+}
+
+.textHighEmph.clickable {
+    color: var(--md-sys-color-secondary);
+    cursor: pointer;
+    transition: filter 0.1s color 0.1s;
+}
+
+.textHighEmph.clickable:hover {
+    color: var(--md-sys-color-primary);
+}
+
+.textHighEmph.clickable:active {
+    filter: brightness(85%);
 }
