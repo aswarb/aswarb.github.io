@@ -22,7 +22,7 @@ function Solution({ path }) {
         setContents(data)
     }, [data])
 
-    return <>{JSON.stringify(contents)}</>
+    return <div style={{whiteSpace:"pre-wrap"}}>{(contents)}</div>
 }
 
 function SolutionList() {
