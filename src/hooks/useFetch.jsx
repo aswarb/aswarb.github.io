@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 
-export function useFetch(url) {
+export function useFetch(url, type = 'json') {
     const [result, setResult] = useState({})
     useEffect(() => {
         const loadProject = async () => {
             await fetch(url)
-                .then((response) => response.json())
+                .then((response) => (type == 'json' ? response.json() : response.text()))
                 .then((data) => setResult(data))
         }
         loadProject()
