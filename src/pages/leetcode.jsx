@@ -22,28 +22,20 @@ function Solution({ jsonDataPath }) {
         setJsonData(data)
         const paths = Object.keys(jsonData?.languages ?? {}).map((k) => {
             const file = jsonData.languages[k].file
-            return `https://raw.githubusercontent.com/aswarb/leetcodeSolutions/main/${currentPath}${file.slice(2,file.length)}`
+            return `https://raw.githubusercontent.com/aswarb/leetcodeSolutions/main/${currentPath}${file.slice(2, file.length)}`
         })
 
-        const solutionsArr = []
-        paths.forEach((p) => {
-            fetch(p)
-                .then((res) => res.text())
-                .then((d) => {
-                    console.log(p)
-
-                    solutionsArr.push(d)
-                })
+        Promise.all(paths.map((p) => fetch(p).then((res) => res.text()))).then((results) => {
+            setSolutions(results)
         })
-        setSolutions(solutionsArr)
     }, [data])
 
     console.log(solutions)
-    
+
     return (
         <Collapsible title={jsonData?.name}>
             {solutions?.map((s) => (
-                <div style={{whiteSpace:'pre-wrap'}}>{s}</div>
+                <div style={{ whiteSpace: 'pre-wrap' }}>{s}</div>
             ))}
         </Collapsible>
     )
