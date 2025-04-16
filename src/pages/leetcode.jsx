@@ -21,13 +21,13 @@ function Solution({ path }) {
     useEffect(() => {
         setContents(data)
     }, [data])
-
-    return <div style={{whiteSpace:"pre-wrap"}}>{(contents)}</div>
+    console.log(String(contents))
+    return <div style={{ whiteSpace: 'pre-wrap', overflow: 'visible' }}>{String(contents)}</div>
 }
 
 function SolutionList() {
     const allFiles = GetAllFiles('aswarb', 'leetcodeSolutions')
-
+    console.log(allFiles)
     const [blobs, setBlobs] = useState([])
 
     useEffect(() => {
