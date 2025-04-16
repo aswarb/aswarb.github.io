@@ -21,7 +21,6 @@ function Solution({ path }) {
     useEffect(() => {
         setContents(data)
     }, [data])
-    console.log(String(contents))
     return <div style={{ whiteSpace: 'pre-wrap', overflow: 'visible' }}>{String(contents)}</div>
 }
 
@@ -31,7 +30,7 @@ function SolutionList() {
     const [blobs, setBlobs] = useState([])
 
     useEffect(() => {
-        setBlobs(allFiles.tree?.filter((el) => el.type === 'blob'))
+        setBlobs(allFiles.tree?.filter((el) => el.type === 'blob' && el.path.includes('json') && el.path.includes('src/')))
     }, [allFiles])
 
     return (
