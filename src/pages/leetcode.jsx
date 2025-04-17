@@ -1,6 +1,8 @@
 import { useFetch } from '!hooks/useFetch.jsx'
 import Collapsible from '!components/collapsible'
 
+import style from '!pages/leetcode.module.scss?module'
+
 import { useEffect, useState } from 'react'
 
 function GetAllFiles(user, repoName) {
@@ -15,14 +17,17 @@ function getFileContent(path, type = 'text') {
 function Solution({ jsonDataPath }) {
     const [jsonData, setJsonData] = useState('')
     const [solutions, setSolutions] = useState([])
+    const [problem, setProblem] = useState('')
     const data = getFileContent(jsonDataPath, 'json')
     const currentPath = jsonDataPath.slice(0, jsonDataPath.lastIndexOf('/') + 1)
 
     useEffect(() => {
         setJsonData(data)
-	if (!data) {return}
+        if (!data) {
+            return
+        }
 
-        const mappings = Object.keys(data?.languages ?? {}).map(async (k) => {
+        const mappingsRequest = Object.keys(data?.languages ?? {}).map(async (k) => {
             const file = data?.languages[k].file
             const path = `https://raw.githubusercontent.com/aswarb/leetcodeSolutions/main/${currentPath}${file.slice(2, file.length)}`
 
@@ -33,16 +38,29 @@ function Solution({ jsonDataPath }) {
             return map
         })
 
-        Promise.all(mappings).then((result) => setSolutions(result))
+        Promise.all(mappingsRequest).then((result) => setSolutions(result))
+
+        const problemRequest = async () => {
+            const path = `https://raw.githubusercontent.com/aswarb/leetcodeSolutions/main/${currentPath}problem.md`
+
+            const req = await fetch(path)
+            const result = await req.text()
+
+            return result
+        }
+        Promise.resolve(problemRequest()).then((result) => setProblem(result))
     }, [data])
 
     return (
-        <Collapsible title={jsonData?.problem?.name}>
-            {solutions?.map((s) => (
-                <div style={{ whiteSpace: 'pre-wrap' }}>
-                    {s.lang} {s.content}
-                </div>
-            ))}
+        <Collapsible title={jsonData?.problem?.name} classNames={[style.scrollOverflow]}>
+            <div style={{ overflow: 'scroll' }}>
+                <div style={{ whiteSpace: 'pre-wrap' }}>{problem ?? ''}</div>
+                {solutions?.map((s) => (
+                    <div style={{ whiteSpace: 'pre-wrap' }}>
+                        {s.lang} {s.content}
+                    </div>
+                ))}
+            </div>
         </Collapsible>
     )
 }
