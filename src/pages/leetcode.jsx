@@ -14,6 +14,54 @@ function getFileContent(path, type = 'text') {
     return useFetch(`https://raw.githubusercontent.com/aswarb/leetcodeSolutions/main/${path}`, type)
 }
 
+function Carousel({ children }) {
+    const [selectedIndex, setSelectedIndex] = useState(0)
+
+    function scrollIntoView(dest) {
+        const root = document.getElementById('carousel')
+        const destination = document.getElementById(dest)
+        console.log(root)
+        console.log(destination)
+        destination.scrollIntoView({ inline: 'start', block: 'nearest' })
+    }
+
+    return (
+        <>
+            <div style={{ marginLeft: 'auto', marginRight: 'auto', width: '90%' }}>
+                <div>
+                    {children.map((child, index) => {
+                        return (
+                            <button
+                                className={
+                                    style.navButton +
+                                    ' ' +
+                                    (selectedIndex == index ? style.active : '')
+                                }
+                                key={child.key + 'button'}
+                                onClick={() => {
+                                    scrollIntoView(child.props.id)
+                                    setSelectedIndex(index)
+                                }}
+                            >
+                                {child.props.id}
+                            </button>
+                        )
+                    })}
+                </div>
+                <div className={style.carouselViewport}>
+                    <div className={style.carousel} id={'carousel'}>
+                        {children.map((child, index) => (
+                            <div key={index} className={[style.slide].join(' ')}>
+                                {child}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
 function Solution({ jsonDataPath }) {
     const [jsonData, setJsonData] = useState('')
     const [solutions, setSolutions] = useState([])
@@ -54,12 +102,16 @@ function Solution({ jsonDataPath }) {
     return (
         <Collapsible title={jsonData?.problem?.name} classNames={[style.scrollOverflow]}>
             <div style={{ overflow: 'scroll' }}>
-                <div style={{ whiteSpace: 'pre-wrap' }}>{problem ?? ''}</div>
-                {solutions?.map((s) => (
-                    <div style={{ whiteSpace: 'pre-wrap' }}>
-                        {s.lang} {s.content}
-                    </div>
-                ))}
+                <Collapsible title="Problem">
+                    <div style={{ whiteSpace: 'pre-wrap' }}>{problem ?? ''}</div>
+                </Collapsible>
+                <Carousel>
+                    {solutions?.map((s, index) => (
+                        <div style={{ whiteSpace: 'pre-wrap' }} id={s.lang} key={index}>
+                            {s.content}
+                        </div>
+                    ))}
+                </Carousel>
             </div>
         </Collapsible>
     )
@@ -81,7 +133,7 @@ function SolutionList() {
     return (
         <div>
             {blobs?.map((b, index) => (
-                <div key={index}>
+                <div key={index} style={{ marginBottom: '10px' }}>
                     <Solution jsonDataPath={b.path} />
                 </div>
             ))}

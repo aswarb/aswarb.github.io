@@ -1,0 +1,20 @@
+@use '!src/themes.scss';
+
+.scrollOverflow {
+    overflow: scroll;
+}
+
+.carousel {
+  width:85%;
+  margin-left:auto;
+  margin-right:auto;
+  display:flex;
+  flex-direction:column;
+  overflow:hide;
+  align-items:stretch;
+}
+
+.carousel .slide {
+
+  border: 1px solid var(--md-sys-color-outline-variant)
+}
