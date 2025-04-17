@@ -1,7 +1,6 @@
 import style from './Card.module.scss?modules'
 
 export default function Card({ classNames = [], children }) {
-    console.log(classNames)
     return <div className={style.card + ' ' + classNames.join(' ')}>{children}</div>
 }
 

@@ -4,6 +4,7 @@
     height: fit-content;
     margin-top: auto;
     margin-bottom: auto;
+    width: 1200px;
 }
 
 .section {
@@ -21,6 +22,11 @@
 
 .section .title {
     font-size: 25pt;
+}
+
+.leftOffset {
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 .navArea {
@@ -44,7 +50,7 @@
     font-weight: 600;
     font-size: 14pt;
     margin-left: 5px;
-    display:inline;
+    display: inline;
 }
 
 .rarr {
@@ -57,4 +63,25 @@
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+}
+
+.navCard.fixedWidth {
+    width: 250px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-basis: auto;
+}
+
+.textHighEmph.clickable {
+    color: var(--md-sys-color-secondary);
+    cursor: pointer;
+    transition: filter 0.1s color 0.1s;
+}
+
+.textHighEmph.clickable:hover {
+    color: var(--md-sys-color-primary);
+}
+
+.textHighEmph.clickable:active {
+    filter: brightness(85%);
 }

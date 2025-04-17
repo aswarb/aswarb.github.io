@@ -18,6 +18,8 @@ const LOCALSTORAGE_DARKMODE_KEY = 'aswarb.github.io-darkmode'
 function NavBar() {
     const location = useLocation()
 
+    const context = useStateContext()
+
     return (
         <>
             <div className="navRail" style={{ position: 'relative' }}>
@@ -78,6 +80,16 @@ function NavBar() {
                             }
                         }}
                     />
+                </div>
+                <div className="navSection">
+                    <button
+                        className="contactMeButton"
+                        onClick={() => {
+                            context.setIsOpen(!context.isOpen)
+                        }}
+                    >
+                        Contact Me
+                    </button>
                 </div>
             </div>
         </>
