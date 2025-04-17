@@ -14,20 +14,19 @@ function getFileContent(path, type = 'text') {
     return useFetch(`https://raw.githubusercontent.com/aswarb/leetcodeSolutions/main/${path}`, type)
 }
 
-function Carousel({ children }) {
+function Carousel({ children, listIndex = 0 }) {
     const [selectedIndex, setSelectedIndex] = useState(0)
 
     function scrollIntoView(dest) {
-        const root = document.getElementById('carousel')
+        //const root = document.getElementById('carousel')
         const destination = document.getElementById(dest)
-        console.log(root)
-        console.log(destination)
+        console.log(dest)
         destination.scrollIntoView({ inline: 'start', block: 'nearest' })
     }
 
     return (
         <>
-            <div style={{ marginLeft: 'auto', marginRight: 'auto', width: '90%' }}>
+            <div style={{ marginLeft: 'auto', marginRight: 'auto', width: '92.5%' }}>
                 <div>
                     {children.map((child, index) => {
                         return (
@@ -37,13 +36,13 @@ function Carousel({ children }) {
                                     ' ' +
                                     (selectedIndex == index ? style.active : '')
                                 }
-                                key={child.key + 'button'}
+                                key={listIndex + child.key + 'button'}
                                 onClick={() => {
-                                    scrollIntoView(child.props.id)
+                                    scrollIntoView(listIndex + child.key)
                                     setSelectedIndex(index)
                                 }}
                             >
-                                {child.props.id}
+                                {child.key}
                             </button>
                         )
                     })}
@@ -51,7 +50,7 @@ function Carousel({ children }) {
                 <div className={style.carouselViewport}>
                     <div className={style.carousel} id={'carousel'}>
                         {children.map((child, index) => (
-                            <div key={index} className={[style.slide].join(' ')}>
+                            <div key={index + child.key} className={[style.slide].join(' ')}>
                                 {child}
                             </div>
                         ))}
@@ -62,7 +61,7 @@ function Carousel({ children }) {
     )
 }
 
-function Solution({ jsonDataPath }) {
+function Solution({ jsonDataPath, listIndex = 0 }) {
     const [jsonData, setJsonData] = useState('')
     const [solutions, setSolutions] = useState([])
     const [problem, setProblem] = useState('')
@@ -98,17 +97,45 @@ function Solution({ jsonDataPath }) {
         }
         Promise.resolve(problemRequest()).then((result) => setProblem(result))
     }, [data])
-
+    console.log(listIndex)
     return (
         <Collapsible title={jsonData?.problem?.name} classNames={[style.scrollOverflow]}>
             <div style={{ overflow: 'scroll' }}>
                 <Collapsible title="Problem">
                     <div style={{ whiteSpace: 'pre-wrap' }}>{problem ?? ''}</div>
                 </Collapsible>
-                <Carousel>
+                <Carousel listIndex={listIndex}>
                     {solutions?.map((s, index) => (
-                        <div style={{ whiteSpace: 'pre-wrap' }} id={s.lang} key={index}>
-                            {s.content}
+                        <div id={listIndex + s.lang} key={s.lang}>
+                            <div style={{ whiteSpace: 'pre-wrap' }} className={style.codeblock}>
+                                {s.content}
+                            </div>
+                            <div className={style.statsBox}>
+                                <div>
+                                    <div className={style.title}>Runtime</div>
+                                    <span className={style.statName}> Value: </span>
+                                    {JSON.stringify(
+                                        jsonData?.languages[s.lang].stats.runtime.value,
+                                    )}{' '}
+                                    ms <br />
+                                    <span className={style.statName}> Percentile: </span>
+                                    {JSON.stringify(
+                                        jsonData?.languages[s.lang].stats.runtime.percentile,
+                                    )}
+                                </div>
+                                <div>
+                                    <div className={style.title}>Memory</div>
+                                    <span className={style.statName}> Value: </span>
+                                    {JSON.stringify(
+                                        jsonData?.languages[s.lang].stats.memory.value,
+                                    )}{' '}
+                                    ms <br />
+                                    <span className={style.statName}> Percentile: </span>
+                                    {JSON.stringify(
+                                        jsonData?.languages[s.lang].stats.memory.percentile,
+                                    )}
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </Carousel>
@@ -119,7 +146,6 @@ function Solution({ jsonDataPath }) {
 
 function SolutionList() {
     const allFiles = GetAllFiles('aswarb', 'leetcodeSolutions')
-    console.log(allFiles)
     const [blobs, setBlobs] = useState([])
 
     useEffect(() => {
@@ -134,7 +160,7 @@ function SolutionList() {
         <div>
             {blobs?.map((b, index) => (
                 <div key={index} style={{ marginBottom: '10px' }}>
-                    <Solution jsonDataPath={b.path} />
+                    <Solution jsonDataPath={b.path} listIndex={index} />
                 </div>
             ))}
         </div>
