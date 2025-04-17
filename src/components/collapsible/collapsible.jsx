@@ -6,7 +6,7 @@ export default function Collapsible({ title = '', classNames = [], children }) {
     const [state, setState] = useState(false)
 
     return (
-        <>
+        <div className={style.container}>
             <div
                 className={style.title}
                 onClick={() => {
@@ -28,6 +28,6 @@ export default function Collapsible({ title = '', classNames = [], children }) {
             >
                 {children}
             </div>
-        </>
+        </div>
     )
 }

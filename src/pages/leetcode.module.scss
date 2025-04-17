@@ -3,3 +3,84 @@
 .scrollOverflow {
     overflow: scroll;
 }
+
+.carousel {
+    width: 100%;
+    display: flex;
+    height: fit-content;
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.carousel .slide {
+    flex: 0 0 100%;
+    overflow: scroll;
+}
+
+.carouselViewport {
+    overflow: hidden;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: 0.5em;
+    width: 100%;
+    height: fit-content;
+    margin: 5px;
+}
+
+.navButton {
+    border-radius: 2em;
+    margin-top: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+
+    transition:
+        background-color 0.1s,
+        color 0.1s,
+        border 0.1s;
+}
+
+.navButton:not(.active) {
+    background-color: var(--md-sys-color-surface-container-high);
+    color: var(--md-sys-color-on-surface-variant);
+    border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.navButton.active {
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.codeblock {
+    background: var(--md-sys-color-surface-container-highest);
+    border-bottom: 1px solid var(--md-sys-color-outline);
+    padding-left: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    overflow-y: auto;
+    height: 15em;
+    scrollbar-width: auto; /* or thin */
+    scrollbar-color: #888 #f1f1f1;
+}
+
+.statsBox {
+    display: flex;
+    flex-direction: row;
+}
+.statsBox > * {
+    padding: 10px 10px 5px 20px;
+    display: block;
+    width: 100%;
+}
+
+.statsBox .title {
+    font-size: 14pt;
+    font-weight: 550;
+}
+
+.statsBox .statName {
+    font-weight: 450;
+}

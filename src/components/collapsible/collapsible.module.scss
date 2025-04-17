@@ -26,11 +26,6 @@
     max-height: 0px;
     border-radius: 0.5em;
     overflow: hidden;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5px;
-    padding-left: 10px;
-    padding: 5px;
     font-size: 0pt;
     transition:
         max-height 0.1s,
@@ -39,11 +34,29 @@
 }
 
 .content.active {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    padding-left: 10px;
+    padding: 5px;
     max-height: 540px;
     font-size: 12pt;
     padding-left: 10px;
     border: 1px solid var(--md-sys-color-outline-variant);
     background-color: var(--md-sys-color-surface-container-high);
+}
+.content:not(.active) {
+    margin: 0px;
+    padding: 0px;
+}
+
+.content.active * {
+    opacity: 100%;
+    transition: opacity 0.05s;
+}
+
+.content:not(.active) * {
+    opacity: 0%;
 }
 
 .svgArrow {
