@@ -62,22 +62,6 @@ function Carousel({ children, listIndex = 0 }) {
     )
 }
 
-async function getLazyFetchRequest(url, type = 'text') {
-    const lazyFn = async () => {
-        const res = await fetch(url)
-        switch (type) {
-            case 'text':
-                return await res.text()
-            case 'json':
-                return await res.json()
-            default:
-                return await res.text()
-        }
-    }
-
-    return lazyFn
-}
-
 function Solution({ jsonDataPath, listIndex = 0 }) {
     const [jsonData, setJsonData] = useState('')
     const [solutions, setSolutions] = useState([])
@@ -118,7 +102,7 @@ function Solution({ jsonDataPath, listIndex = 0 }) {
             }
             Promise.resolve(problemRequest()).then((result) => setProblem(result))
         }
-    }, [shouldFetchProblem, jsonData])
+    }, [shouldFetchProblem])
 
     return (
         <Collapsible
@@ -137,6 +121,9 @@ function Solution({ jsonDataPath, listIndex = 0 }) {
                 >
                     <div style={{ whiteSpace: 'pre-wrap' }}>{problem ?? ''}</div>
                 </Collapsible>
+                <hr />
+                Problem URL: <a href={jsonData?.problem?.url}>{jsonData?.problem?.url}</a>
+                <hr />
                 <Carousel listIndex={listIndex}>
                     {solutions?.map((s) => (
                         <div id={listIndex + s.lang} key={s.lang}>
@@ -182,11 +169,13 @@ function SolutionList() {
     const [blobs, setBlobs] = useState([])
 
     useEffect(() => {
+        console.log(allFiles)
         setBlobs(
             allFiles.tree?.filter(
-                (el) => el.type === 'blob' && el.path.includes('json') && el.path.includes('src/'),
+                (el) => el.type === 'blob' && el.path.match(/src\/\d{4}\/data\.json/),
             ),
         )
+        console.log(blobs)
     }, [allFiles])
 
     return (
@@ -203,6 +192,7 @@ function SolutionList() {
 export function Leetcode() {
     return (
         <div className="content">
+            <h1>Leetcode Solutions</h1>
             <SolutionList />
         </div>
     )
