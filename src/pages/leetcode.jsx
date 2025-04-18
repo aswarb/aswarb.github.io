@@ -169,13 +169,11 @@ function SolutionList() {
     const [blobs, setBlobs] = useState([])
 
     useEffect(() => {
-        console.log(allFiles)
         setBlobs(
             allFiles.tree?.filter(
                 (el) => el.type === 'blob' && el.path.match(/src\/\d{4}\/data\.json/),
             ),
         )
-        console.log(blobs)
     }, [allFiles])
 
     return (
