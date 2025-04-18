@@ -23,37 +23,38 @@ function Carousel({ children, listIndex = 0 }) {
         console.log(dest)
         destination.scrollIntoView({ inline: 'start', block: 'nearest' })
     }
-
     return (
         <>
             <div style={{ marginLeft: 'auto', marginRight: 'auto', width: '92.5%' }}>
                 <div>
-                    {children.map((child, index) => {
-                        return (
-                            <button
-                                className={
-                                    style.navButton +
-                                    ' ' +
-                                    (selectedIndex == index ? style.active : '')
-                                }
-                                key={listIndex + child.key + 'button'}
-                                onClick={() => {
-                                    scrollIntoView(listIndex + child.key)
-                                    setSelectedIndex(index)
-                                }}
-                            >
-                                {child.key}
-                            </button>
-                        )
-                    })}
+                    {children != '' &&
+                        children.map((child, index) => {
+                            return (
+                                <button
+                                    className={
+                                        style.navButton +
+                                        ' ' +
+                                        (selectedIndex == index ? style.active : '')
+                                    }
+                                    key={listIndex + child.key + 'button'}
+                                    onClick={() => {
+                                        scrollIntoView(listIndex + child.key)
+                                        setSelectedIndex(index)
+                                    }}
+                                >
+                                    {child.key}
+                                </button>
+                            )
+                        })}
                 </div>
                 <div className={style.carouselViewport}>
                     <div className={style.carousel} id={'carousel'}>
-                        {children.map((child, index) => (
-                            <div key={index + child.key} className={[style.slide].join(' ')}>
-                                {child}
-                            </div>
-                        ))}
+                        {children != '' &&
+                            children.map((child, index) => (
+                                <div key={index + child.key} className={[style.slide].join(' ')}>
+                                    {child}
+                                </div>
+                            ))}
                     </div>
                 </div>
             </div>
@@ -61,51 +62,83 @@ function Carousel({ children, listIndex = 0 }) {
     )
 }
 
+async function getLazyFetchRequest(url, type = 'text') {
+    const lazyFn = async () => {
+        const res = await fetch(url)
+        switch (type) {
+            case 'text':
+                return await res.text()
+            case 'json':
+                return await res.json()
+            default:
+                return await res.text()
+        }
+    }
+
+    return lazyFn
+}
+
 function Solution({ jsonDataPath, listIndex = 0 }) {
     const [jsonData, setJsonData] = useState('')
     const [solutions, setSolutions] = useState([])
     const [problem, setProblem] = useState('')
+    const [shouldFetchProblem, setShouldFetchProblem] = useState(false)
+    const [shouldFetchSolutions, setShouldFetchSolutions] = useState(false)
+
     const data = getFileContent(jsonDataPath, 'json')
     const currentPath = jsonDataPath.slice(0, jsonDataPath.lastIndexOf('/') + 1)
 
     useEffect(() => {
         setJsonData(data)
-        if (!data) {
-            return
-        }
-
-        const mappingsRequest = Object.keys(data?.languages ?? {}).map(async (k) => {
-            const file = data?.languages[k].file
-            const path = `https://raw.githubusercontent.com/aswarb/leetcodeSolutions/main/${currentPath}${file.slice(2, file.length)}`
-
-            const req = await fetch(path)
-            const result = await req.text()
-
-            const map = { lang: k, content: result }
-            return map
-        })
-
-        Promise.all(mappingsRequest).then((result) => setSolutions(result))
-
-        const problemRequest = async () => {
-            const path = `https://raw.githubusercontent.com/aswarb/leetcodeSolutions/main/${currentPath}problem.md`
-
-            const req = await fetch(path)
-            const result = await req.text()
-
-            return result
-        }
-        Promise.resolve(problemRequest()).then((result) => setProblem(result))
     }, [data])
-    console.log(listIndex)
+
+    useEffect(() => {
+        if (shouldFetchSolutions === true) {
+            const mappingsRequest = Object.keys(jsonData?.languages ?? {}).map(async (k) => {
+                const file = data?.languages[k].file
+                const path = `https://raw.githubusercontent.com/aswarb/leetcodeSolutions/main/${currentPath}${file.slice(2, file.length)}`
+
+                const request = await fetch(path)
+                const result = await request.text()
+
+                const map = { lang: k, content: result }
+                return map
+            })
+            Promise.all(mappingsRequest).then((result) => setSolutions(result))
+        }
+    }, [shouldFetchSolutions, jsonData])
+
+    useEffect(() => {
+        if (shouldFetchProblem === true) {
+            const problemRequest = async () => {
+                const path = `https://raw.githubusercontent.com/aswarb/leetcodeSolutions/main/${currentPath}problem.md`
+                const request = await fetch(path)
+                const result = await request.text()
+                return result
+            }
+            Promise.resolve(problemRequest()).then((result) => setProblem(result))
+        }
+    }, [shouldFetchProblem, jsonData])
+
     return (
-        <Collapsible title={jsonData?.problem?.name} classNames={[style.scrollOverflow]}>
+        <Collapsible
+            title={jsonData?.problem?.name}
+            classNames={[style.scrollOverflow]}
+            onExpandCallback={() => {
+                setShouldFetchSolutions(true)
+            }}
+        >
             <div style={{ overflow: 'scroll' }}>
-                <Collapsible title="Problem">
+                <Collapsible
+                    title="Problem"
+                    onExpandCallback={() => {
+                        setShouldFetchProblem(true)
+                    }}
+                >
                     <div style={{ whiteSpace: 'pre-wrap' }}>{problem ?? ''}</div>
                 </Collapsible>
                 <Carousel listIndex={listIndex}>
-                    {solutions?.map((s, index) => (
+                    {solutions?.map((s) => (
                         <div id={listIndex + s.lang} key={s.lang}>
                             <div style={{ whiteSpace: 'pre-wrap' }} className={style.codeblock}>
                                 {s.content}
