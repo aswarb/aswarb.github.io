@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export function useFetch(url, type = 'json', assignCallback) {
+export function useFetch(url, type = 'json') {
     const [result, setResult] = useState({})
     useEffect(() => {
         const loadProject = async () => {
