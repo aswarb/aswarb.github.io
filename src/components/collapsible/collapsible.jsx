@@ -2,7 +2,12 @@ import { useState, useEffect } from 'react'
 import style from './collapsible.module.scss?module'
 import DownIcon from '!assets/icons/arrow_drop_down_48dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.svg?react'
 
-export default function Collapsible({ title = '', classNames = [], children, onExpandCallback=()=>{} }) {
+export default function Collapsible({
+    title = '',
+    classNames = [],
+    children,
+    onExpandCallback = () => {},
+}) {
     const [state, setState] = useState(false)
 
     useEffect(() => {

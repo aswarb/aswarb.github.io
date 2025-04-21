@@ -3,11 +3,27 @@ import style from '!pages/home.module.scss?modules'
 import * as projectMap from '!assets/project-mapping.json'
 import Card from '!components/cards'
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 import { useStateContext } from '!src/context.jsx'
 
 export function Home() {
     const context = useStateContext()
+    const [difficultyBreakdown, setDifficultyBreakdown] = useState({})
+    const [languageBreakdown, setLanguageBreakdown] = useState({})
+
+    useEffect(() => {
+        const request = async () => {
+            const path = `https://raw.githubusercontent.com/aswarb/leetcodeSolutions/main/src/data.json`
+            const request = await fetch(path)
+            const result = await request.json()
+            return result
+        }
+        Promise.resolve(request()).then((result) => {
+            setDifficultyBreakdown(result.solved[`by-diff`])
+            setLanguageBreakdown(result.solved[`by-lang`])
+        })
+    }, [])
 
     const projects = projectMap.projects.sort((project) => project.lastEditDate)
     const shownProjects = projects.length > 3 ? projects.slice(0, 3) : projects
@@ -61,6 +77,7 @@ export function Home() {
                     <Card.Content>
                         TBA. Will come with development of
                         <Link to="/leetcode"> Leetcode problems section </Link>
+                        {JSON.stringify(languageBreakdown)}
                     </Card.Content>
                 </Card>
             </div>
