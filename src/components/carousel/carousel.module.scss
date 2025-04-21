@@ -1,8 +1,8 @@
 @use '!src/themes.scss';
+
 .scrollOverflow {
     overflow: scroll;
 }
-
 
 .carousel {
     width: 100%;
@@ -53,4 +53,3 @@
     color: var(--md-sys-color-on-secondary-container);
     border: 1px solid rgba(0, 0, 0, 0);
 }
-

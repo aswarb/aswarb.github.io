@@ -99,7 +99,7 @@ export function About() {
             <div className="leftcol">
                 <ShortCutWidget activeSection={activeSection} />
             </div>
-            <div id="content" className="content">
+            <div id="content" className="content scrollable yScroll">
                 <h1>About</h1>
                 <hr />
                 <div

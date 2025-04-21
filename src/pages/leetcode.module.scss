@@ -3,6 +3,10 @@
     overflow: scroll;
 }
 
+.fitContentHeight {
+    height: fit-content;
+}
+
 .codeblock {
     background: var(--md-sys-color-surface-container-highest);
     border-bottom: 1px solid var(--md-sys-color-outline);
@@ -10,9 +14,7 @@
     padding-top: 1em;
     padding-bottom: 1em;
     overflow-y: auto;
-    height: 15em;
-    scrollbar-width: auto; /* or thin */
-    scrollbar-color: #888 #f1f1f1;
+    height: 16em;
 }
 
 .statsBox {

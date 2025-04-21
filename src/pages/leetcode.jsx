@@ -4,7 +4,6 @@ import Carousel from '!components/carousel'
 
 import style from '!pages/leetcode.module.scss?module'
 
-
 import { useEffect, useState } from 'react'
 
 function GetAllFiles(user, repoName) {
@@ -15,7 +14,6 @@ function GetAllFiles(user, repoName) {
 function getFileContent(path, type = 'text') {
     return useFetch(`https://raw.githubusercontent.com/aswarb/leetcodeSolutions/main/${path}`, type)
 }
-
 
 function Solution({ jsonDataPath, listIndex = 0 }) {
     const [jsonData, setJsonData] = useState('')
@@ -62,7 +60,7 @@ function Solution({ jsonDataPath, listIndex = 0 }) {
     return (
         <Collapsible
             title={jsonData?.problem?.name}
-            classNames={[style.scrollOverflow]}
+            classNames={[style.scrollOverflow, 'scrollable']}
             onExpandCallback={() => {
                 setShouldFetchSolutions(true)
             }}
@@ -70,6 +68,7 @@ function Solution({ jsonDataPath, listIndex = 0 }) {
             <div style={{ overflow: 'scroll' }}>
                 <Collapsible
                     title="Problem"
+                    classNames={['scrollable', 'yScroll']}
                     onExpandCallback={() => {
                         setShouldFetchProblem(true)
                     }}
@@ -82,7 +81,10 @@ function Solution({ jsonDataPath, listIndex = 0 }) {
                 <Carousel listIndex={listIndex}>
                     {solutions?.map((s) => (
                         <div id={listIndex + s.lang} key={s.lang}>
-                            <div style={{ whiteSpace: 'pre-wrap' }} className={style.codeblock}>
+                            <div
+                                style={{ whiteSpace: 'pre-wrap' }}
+                                className={style.codeblock + ' scrollable yScroll'}
+                            >
                                 {s.content}
                             </div>
                             <div className={style.statsBox}>
@@ -144,7 +146,7 @@ function SolutionList() {
 
 export function Leetcode() {
     return (
-        <div className="content">
+        <div className="content scrollable">
             <h1>Leetcode Solutions</h1>
             <SolutionList />
         </div>

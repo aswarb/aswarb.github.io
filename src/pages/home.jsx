@@ -28,7 +28,7 @@ export function Home() {
     const projects = projectMap.projects.sort((project) => project.lastEditDate)
     const shownProjects = projects.length > 3 ? projects.slice(0, 3) : projects
     return (
-        <div className={'content ' + style.container}>
+        <div className={'content scrollable yScroll ' + style.container}>
             <div className={style.section}>
                 <div className={style.title + ' ' + style.leftOffset}>Welcome,</div>
                 <div className={style.main + ' ' + style.leftOffset}> Feel free to explore </div>
