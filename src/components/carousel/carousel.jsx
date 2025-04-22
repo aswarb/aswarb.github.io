@@ -5,6 +5,7 @@ export default function Carousel({ children, listIndex = 0 }) {
     const [selectedIndex, setSelectedIndex] = useState(0)
 
     function scrollIntoView(dest) {
+        console.log(dest)
         const destination = document.getElementById(dest)
         destination.scrollIntoView({ inline: 'start', block: 'nearest' })
     }
