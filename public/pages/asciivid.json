@@ -14,12 +14,19 @@
             "altText": "",
             "value": "Placeholder text"
         },
+	{
+            "type": "reddit-embed",
+            "classes": ["reddit-embed"],
+            "altText": "",
+            "value": "https://www.reddit.com/r/unixporn/comments/n13r71/"
+        },
         {
             "type": "yt-embed",
             "classes": ["yt-embed"],
             "altText": "",
             "value": "https://www.youtube.com/watch?v=uiZf73uJHhQ"
-        },{
+        }
+	,{
             "type": "plaintext",
             "classes": [],
             "altText": "",

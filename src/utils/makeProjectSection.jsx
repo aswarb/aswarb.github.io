@@ -1,5 +1,18 @@
+import { useEffect } from 'react'
+
+function isFirefoxTrackingProtectionEnabled(url) {
+    fetch(url, {
+        method: 'GET',
+    })
+        .then((r) => {
+            console.log(r)
+        })
+        .catch((e) => {})
+}
+
 export function ProjectSection(index, type, classes, altText, value) {
     let retVal = <></>
+
     switch (type) {
         case 'plaintext': {
             retVal = <>{value}</>
@@ -22,6 +35,21 @@ export function ProjectSection(index, type, classes, altText, value) {
             )
             break
         }
+        case 'reddit-embed': {
+            const newValue = value ? value.replace('www.reddit.com', 'embed.reddit.com') : ''
+            const trackingOn = isFirefoxTrackingProtectionEnabled(newValue)
+            console.log(trackingOn)
+            retVal = (
+                <iframe
+                    height="568"
+                    src={newValue}
+                    width="640px"
+                    scrolling="no"
+                    allowFullScreen={true}
+                ></iframe>
+            )
+            break
+        }
         case 'heading-1': {
             retVal = <span className="heading1"> {value} </span>
         }
@@ -34,8 +62,8 @@ export function ProjectSection(index, type, classes, altText, value) {
     }
 
     return (
-        <p key={index} className={classes} alt={altText}>
+        <div key={index} className={classes} alt={altText}>
             {retVal}
-        </p>
+        </div>
     )
 }

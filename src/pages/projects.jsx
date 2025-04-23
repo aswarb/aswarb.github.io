@@ -2,7 +2,7 @@ import * as projectMap from '!assets/project-mapping.json'
 import { useFetch } from '!hooks/useFetch.jsx'
 import { ProjectSection } from '!utils/makeProjectSection.jsx'
 
-import React, { useCallback, createContext, useContext, useState } from 'react'
+import React, { useCallback, createContext, useContext, useState, useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 
 import Card from '!components/cards'
@@ -93,9 +93,18 @@ function ProjectQuicknotes({ noteArray }) {
 
 function ProjectFullPage({ url }) {
     const result = useFetch(url)
-    let content = result.sections?.map((element, index) => {
-        return ProjectSection(index, element.type, element.classes, element.altText, element.value)
+    const content = []
+    result.sections?.map((element, index) => {
+        const jsx = ProjectSection(
+            index,
+            element.type,
+            element.classes,
+            element.altText,
+            element.value,
+        )
+        content.push(jsx)
     })
+
     return (
         <>
             <div className="project-titlebar">
