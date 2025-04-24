@@ -1,13 +1,74 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import isDarkMode from './isDarkMode.js'
 
-function isFirefoxTrackingProtectionEnabled(url) {
-    fetch(url, {
-        method: 'GET',
-    })
-        .then((r) => {
-            console.log(r)
+function PlainText(value) {
+    return <>{value}</>
+}
+
+function YTEmbed(value) {
+    const newValue = value
+        ? value.replace('youtube.com/watch?v=', 'youtube-nocookie.com/embed/')
+        : ''
+    return (
+        <iframe
+            width="560"
+            height="315"
+            src={newValue}
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+        ></iframe>
+    )
+}
+
+function RedditEmbed({ value } = '') {
+    const key = 'aswarb.github.io-darkmode'
+    const [isDark, setIsDark] = useState(isDarkMode())
+
+    useEffect(() => {
+        const observer = new MutationObserver(() => {
+            setIsDark(isDarkMode())
         })
-        .catch((e) => {})
+
+        observer.observe(document.getElementById('root'), {
+            attributes: true,
+            attributeFilter: ['class'],
+        })
+
+        return () => observer.disconnect()
+    })
+
+    return (
+        <iframe
+            height="568"
+            src={value + (isDark ? '?&theme=dark' : '')}
+            width="640px"
+            scrolling="no"
+            allowFullScreen={true}
+        ></iframe>
+    )
+}
+
+async function GetRedditEmbed(value) {
+    const newValue = value ? value.replace('www.reddit.com', 'embed.reddit.com') : ''
+    try {
+        await fetch(newValue, { mode: 'no-cors' })
+        console.log(newValue)
+        return <RedditEmbed value={newValue} />
+    } catch (e) {
+        console.log(e)
+        return (
+            <div>
+                Error. Showing this reddit post is blocked by tracking protection in your browser.
+                Visit <a href={value}>{value}</a> to see the post.
+            </div>
+        )
+    }
+}
+
+function Heading1(value) {
+    return <span className="heading1"> {value} </span>
 }
 
 export function ProjectSection(index, type, classes, altText, value) {
@@ -15,43 +76,25 @@ export function ProjectSection(index, type, classes, altText, value) {
 
     switch (type) {
         case 'plaintext': {
-            retVal = <>{value}</>
+            retVal = PlainText(value)
             break
         }
         case 'yt-embed': {
-            const newValue = value
-                ? value.replace('youtube.com/watch?v=', 'youtube-nocookie.com/embed/')
-                : ''
-            retVal = (
-                <iframe
-                    width="560"
-                    height="315"
-                    src={newValue}
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                ></iframe>
-            )
+            retVal = YTEmbed(value)
             break
         }
         case 'reddit-embed': {
-            const newValue = value ? value.replace('www.reddit.com', 'embed.reddit.com') : ''
-            const trackingOn = isFirefoxTrackingProtectionEnabled(newValue)
-            console.log(trackingOn)
-            retVal = (
-                <iframe
-                    height="568"
-                    src={newValue}
-                    width="640px"
-                    scrolling="no"
-                    allowFullScreen={true}
-                ></iframe>
-            )
+            retVal = async () => {
+                return (
+                    <div key={index} className={classes} alt={altText}>
+                        {GetRedditEmbed(value)}
+                    </div>
+                )
+            }
             break
         }
         case 'heading-1': {
-            retVal = <span className="heading1"> {value} </span>
+            retVal = Heading1(value)
         }
     }
 
@@ -60,10 +103,13 @@ export function ProjectSection(index, type, classes, altText, value) {
     } else {
         classes = classes.join(' ')
     }
-
-    return (
-        <div key={index} className={classes} alt={altText}>
-            {retVal}
-        </div>
-    )
+    if (typeof retVal === 'function') {
+        return retVal
+    } else {
+        return (
+            <div key={index} className={classes} alt={altText}>
+                {retVal}
+            </div>
+        )
+    }
 }

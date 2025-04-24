@@ -13,6 +13,8 @@ import projectStyle from '!pages/projects.module.scss?modules'
 import BackIcon from '!assets/icons/arrow_back_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg?react'
 import BoltIcon from '!assets/icons/bolt_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg?react'
 
+import isDarkMode from '!utils/isDarkMode.js'
+
 const projectImportUrl = createContext(null)
 
 function ProjectCard({ thumbnail, title, shortDescription, link }) {
@@ -93,17 +95,44 @@ function ProjectQuicknotes({ noteArray }) {
 
 function ProjectFullPage({ url }) {
     const result = useFetch(url)
-    const content = []
-    result.sections?.map((element, index) => {
-        const jsx = ProjectSection(
-            index,
-            element.type,
-            element.classes,
-            element.altText,
-            element.value,
-        )
-        content.push(jsx)
-    })
+    const [children, setChildren] = useState([])
+    const [childrenResolved, setChildrenResolved] = useState(false)
+
+    useEffect(() => {
+        setChildren(Array(result?.sections?.length).fill(''))
+        if (result?.sections?.length == children?.length) {
+            const arr = [...children]
+            result.sections.map((element, index) => {
+                arr[index] = ProjectSection(
+                    index,
+                    element.type,
+                    element.classes,
+                    element.altText,
+                    element.value,
+                )
+            })
+            setChildren(arr)
+            setChildrenResolved(false)
+        }
+    }, [result?.sections])
+
+    useEffect(() => {
+        if (!childrenResolved) {
+            console.log('resolving children')
+            const arr = children.map((element) => {
+                if (typeof element === 'function') {
+                    return Promise.resolve(element())
+                } else {
+                    return Promise.resolve(element)
+                }
+            })
+            Promise.all(arr).then((promises) => {
+                setChildren(promises)
+                setChildrenResolved(true)
+                console.log('children resolved')
+            })
+        }
+    }, [children, childrenResolved])
 
     return (
         <>
@@ -124,7 +153,12 @@ function ProjectFullPage({ url }) {
                 </div>
             </div>
             <ProjectQuicknotes noteArray={result?.quicknotes} />
-            {content}
+            {children.map((child) => {
+                console.log(children)
+                if (typeof child != 'function') {
+                    return child
+                }
+            })}
         </>
     )
 }
