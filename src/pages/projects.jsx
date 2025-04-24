@@ -114,7 +114,7 @@ function ProjectFullPage({ url }) {
             setChildren(arr)
             setChildrenResolved(false)
         }
-    }, [result?.sections])
+    }, [result?.sections, children?.length])
 
     useEffect(() => {
         if (!childrenResolved) {

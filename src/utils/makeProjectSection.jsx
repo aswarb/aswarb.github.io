@@ -22,8 +22,7 @@ function YTEmbed(value) {
     )
 }
 
-function RedditEmbed({ value } = '') {
-    const key = 'aswarb.github.io-darkmode'
+function useIsDarkMode() {
     const [isDark, setIsDark] = useState(isDarkMode())
 
     useEffect(() => {
@@ -38,6 +37,11 @@ function RedditEmbed({ value } = '') {
 
         return () => observer.disconnect()
     })
+    return isDark
+}
+
+function RedditEmbed({ value } = '') {
+    const isDark = useIsDarkMode()
 
     return (
         <iframe
