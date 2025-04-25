@@ -440,10 +440,46 @@ button:active {
     filter: brightness(75%);
 }
 
-.reddit-embed {
-    margin-left: auto;
-    margin-right: auto;
+.paragraph {
+    display: block;
+    margin: 15px;
+    width: calc(100% - 30px);
+    font-size: 13pt;
+}
+.reddit-embed > * {
+    left: 50%;
+    right: 50%;
+    position: relative;
+    transform: translate(-50%);
+}
 
-    width: fit-content;
+.diagram {
+    border-radius: 0.5em;
     height: fit-content;
+    width: calc(100% - 30px);
+    border: 1px solid var(--md-sys-color-outline);
+    background-color: rgba(222, 222, 230, 255);
+    margin: 15px;
+}
+
+.diagram > * {
+    width: 100%;
+}
+
+.heading1 {
+    font-size: 20pt;
+    width: fit-content;
+    display: block;
+}
+.heading {
+    margin: 15px;
+    margin-left: 20px;
+}
+
+.errorContainerOverride {
+    background-color: var(--md-sys-color-error-container) !important;
+}
+
+.errorContainerOverride * {
+    color: var(--md-sys-color-on-error-container) !important;
 }

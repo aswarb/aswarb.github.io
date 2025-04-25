@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import isDarkMode from './isDarkMode.js'
+import DOMPurify from 'dompurify'
+import Card from '!components/cards'
 
 function PlainText(value) {
-    return <>{value}</>
+    return <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(value) }}></div>
 }
 
 function YTEmbed(value) {
@@ -61,18 +63,32 @@ async function GetRedditEmbed(value) {
         console.log(newValue)
         return <RedditEmbed value={newValue} />
     } catch (e) {
-        console.log(e)
         return (
-            <div>
-                Error. Showing this reddit post is blocked by tracking protection in your browser.
-                Visit <a href={value}>{value}</a> to see the post.
-            </div>
+            <Card classNames={['errorContainerOverride']}>
+                <Card.Header>
+                    {' '}
+                    Error - This embedded reddit post could not be be displayed{' '}
+                </Card.Header>
+                <Card.Content>
+                    {' '}
+                    Find the post here: <a href={value}>{value}</a>
+                </Card.Content>
+                <Card.Footer>
+                    {' '}
+                    This can be caused by firefox's enchanced tracking protection, try turning it
+                    off temporarily to see if it gets fixed.
+                </Card.Footer>
+            </Card>
         )
     }
 }
 
 function Heading1(value) {
     return <span className="heading1"> {value} </span>
+}
+
+function SvgImg(value) {
+    return <img src={value} />
 }
 
 export function ProjectSection(index, type, classes, altText, value) {
@@ -99,6 +115,11 @@ export function ProjectSection(index, type, classes, altText, value) {
         }
         case 'heading-1': {
             retVal = Heading1(value)
+            break
+        }
+        case 'svg-img': {
+            retVal = SvgImg(value)
+            break
         }
     }
 

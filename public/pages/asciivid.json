@@ -1,36 +1,104 @@
 {
     "title": "AsciiVid",
-    "quicknotes": ["Command-line python script",
-"Renders existing images / videos as ASCII text",
-"Raster formats only",
-"Used OpenCV, Numpy for image processing, Pygame, FFmpeg for audio",
-"Developed on & off in spare time"
-],
+    "quicknotes": [
+        "Command-line python script",
+        "Renders existing images / videos as ASCII text",
+        "Raster formats only",
+        "Used OpenCV, Numpy for image processing, Pygame, FFmpeg for audio",
+        "Developed on & off in spare time"
+    ],
     "links": [],
     "sections": [
         {
-            "type": "plaintext",
-            "classes": [],
+            "type": "heading-1",
+            "classes": ["heading"],
             "altText": "",
-            "value": "Placeholder text"
+            "value": "The details"
         },
-	{
-            "type": "reddit-embed",
-            "classes": ["reddit-embed"],
+        {
+            "type": "plaintext",
+            "classes": ["paragraph"],
             "altText": "",
-            "value": "https://www.reddit.com/r/unixporn/comments/n13r71/"
+            "value": "Below is a diagram explaining at a high-level what the project actually does:"
+        },
+        {
+            "type": "svg-img",
+            "classes": ["diagram"],
+            "altText": "",
+            "value": "/asciivid_diagram.svg"
+        },
+        {
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "The project takes a naive approach to buffering, making use of queues as buffers with the assumption that the processes exhausting the queue will never catch up to the processes filling the queue. This obviously is a limitation of the project, and a more sophisticated attempt would include threads waiting for frames to appear in their queues before proceeding, rather than stopping when the end of the queue is reached. This would likely mean some way to signal when the end of the queue is reached versus just the queue being empty for now."
+        },
+        {
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "Audio specifically is an area where the project is lacking - not because the project can't handle audio, but because the existing pygame.mixer solution is limited. pygame.mixer features the ability to more finely control audio playback. which could be used if the solution were modified to allow the user to pause and skip through videos"
+        },
+        {
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "Overall I think that while the project's naive approach leaves more to be desired, it can still be considered successful, if somewhat impractical to use due to the small resolutions imposed by rendering as characters in a terminal"
+        },
+        {
+            "type": "heading-1",
+            "classes": ["heading"],
+            "altText": "",
+            "value": "The demonstration"
         },
         {
             "type": "yt-embed",
             "classes": ["yt-embed"],
             "altText": "",
             "value": "https://www.youtube.com/watch?v=uiZf73uJHhQ"
-        }
-	,{
-            "type": "plaintext",
-            "classes": [],
+        },
+        {
+            "type": "heading-1",
+            "classes": ["heading"],
             "altText": "",
-            "value": "Placeholder text"
+            "value": "The story"
+        },
+        {
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "I had started this project when I stumbled across a post from reddit. on <a href='reddit.com/r/unixporn'>r/unixporn</a> I had seen a video continuing the tradition of playing the music video for \"Bad Apple\", a song from the Touhou series, in unconventional places. Below is the original post:"
+        },
+        {
+            "type": "reddit-embed",
+            "classes": [ "reddit-embed", "paragraph"],
+            "altText": "",
+            "value": "https://www.reddit.com/r/unixporn/comments/n13r71/"
+        },
+        {
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "I thought at the time <i>\"I bet I could do that, and have it work for any arbitrary video\"</i>. I could not, it would turn out at the time, do that - although it was a good opportunity to experiment with capturing frames from video with opencv-python. I did however gain more experience with Python at university, and from there I cobbled together the first version of this project (which is now sadly lost to time)."
+        },
+        {
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "I recall the first version used the curses library for python to update the visible area with frames. Each frame wasn't generated like about - the actual conversion remains the same, but each frame at the time was generated before the video would play. This lead to a long wait, and two fundamental limitations. 1. The converted video could not be larger than the available memory in the system, and 2. The curses player did not appear to smoothly refresh at all framerates in all terminals, leading to a rolling effect as the page refreshed and the characters were updated."
+        },
+ {
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "At some point I was attending a wedding and keeping to myself, which lead to this problem resurfacing in my mind, I would stumble across ANSI escape codes whiole searching on my phone for a solution. This was what I was looking for - granted in testing it still didn't seem to work for all terminals - but it was definitely way faster than anything else I had tried, so it was good enough for me for thep purposes of this small pet project. The above demonstration was recorded when I decided to implement ansi escape sequences to return the cursor back to the top of the screen and just overwrite the current terminal output to play video."
+        },
+
+        {
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "The next big change would come later after this big success. Having now renewed my interest I applied what I had learnt about data structures from university to the project, overhauling the design to use these shared queues. This was so successful that I found no need to pre-process any amount of the video anymore, and dramatically decreased the amount of memory needed as now so little of the video needed to be actively stored in memory"
         }
     ]
 }
