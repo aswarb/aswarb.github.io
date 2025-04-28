@@ -74,7 +74,6 @@ async function GetRedditEmbed(value) {
                     Find the post here: <a href={value}>{value}</a>
                 </Card.Content>
                 <Card.Footer>
-                    {' '}
                     This can be caused by firefox's enchanced tracking protection, try turning it
                     off temporarily to see if it gets fixed.
                 </Card.Footer>
