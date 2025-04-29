@@ -1,28 +1,103 @@
 {
     "title": "AsciiVid",
-    "quicknotes": ["Individual Project",
-"Used TTCP CAGE Challenge 2 gym environment",
-"Python",
-"Study of a recurrent structure on performance",
-"PPO models for blue agent",
-"Used Stable Baselines 3 to make PPO models",
-"Red agent modified change strategy randomly", 
-"Models tuned with Optuna",
-"Results inconclusive",
-"Achieved final grade of 80%"
-],
+    "quicknotes": [
+        "Individual Project",
+        "Used TTCP CAGE Challenge 2 gym environment",
+        "Python",
+        "Study of a recurrent structure on performance",
+        "PPO models for blue agent",
+        "Used Stable Baselines 3 to make PPO models",
+        "Red agent modified change strategy randomly",
+        "Models tuned with Optuna",
+        "Results inconclusive",
+        "Achieved final grade of 80%"
+    ],
     "links": {},
     "sections": [
         {
-            "type": "plaintext",
-            "classes": [],
+            "type": "heading-1",
+            "classes": ["paragraph"],
             "altText": "",
-            "value": "Placeholder text"
+            "value": "The brief"
+        },
+        {
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "This project was the assessment for module CM3203 at Cardiff Univeristy for the academic year 23/24. This involved working on your own on a project with a supervisor advising and monitoring work regularly. The brief for my project was to create blue agents through deep reinforcement learning, using the TTCP CAGE Challenge 2 Gym environment"
+        },
+        {
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "This brief was originally created by my supervisor, but I took it on and essentially made it my own by choosing specifically to investigate the performance of a neural networks against a red agent that could change strategies, perhaps mimicking a more realistic agent that may have partial knowledge of the network. The network would be examined both with a basic structure, and with a structure that allowed the network to remember features from previous transitions at each node using LSTM nodes. I chose to do this with PPO models, as PPO-based solutions had historically performed very well in the TTCP CAGE Challenge 1 and 2"
+        },
+        {
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "The hope was that by allowing the nodes to remember features of transitions, or some value calulated from previous transition, the network may be able to perform better against an agent that changes strategies after a number of transitions through short-term memory"
+        },
+        {
+            "type": "heading-1",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "The Method"
+        },
+        {
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "The models were created and trained using Stable Baselines 3 and PyTorch. The models were first each optimised with Optuna - I chose to create two sets of hyperparameters, one optimising for the best mean reward over all runs, and the other optimising for the best standard deviation of rewards over all runs. These four sets of hyperparameters were then taken and used to train 5 models each, with the best performing model at the end of trainign selected for evaluation."
+        },
+        {
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "Model evaluation would include generating a histogram of the rewards to examine how the rewards are distributed for each model, each histogram would feature 50,000 sample episodes. For trained models, these would show the best mean, best standard deviation, and untrained model performance. For models without training, like heuristic and random, I also took a histogram to compare the overall picture of performance."
+        },
+
+        {
+            "type": "heading-1",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "The Result"
+        },
+
+{
+            "type": "img",
+            "classes": ["diagram"],
+            "altText": "",
+            "value": "/cm3203_hist_basic.png"
+        },
+        {
+            "type": "img",
+            "classes": ["diagram"],
+            "altText": "",
+            "value": "/cm3203_hist_custom.png"
         },{
-            "type": "plaintext",
-            "classes": [],
+            "type": "img",
+            "classes": ["diagram"],
             "altText": "",
-            "value": "Placeholder text"
+            "value": "/cm3203_hist_random.png"
+        },{
+            "type": "img",
+            "classes": ["diagram"],
+            "altText": "",
+            "value": "/cm3203_hist_heuristic.png"
+        },
+	
+        {
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "Overall I found that the custom network (with memory) performed maginally better than the basic network, although not by an ammount that would make a meaningful difference.  Both networks performed better than an agent taking random actions. The agents also both outperformed the heuristic agent from the TTCP CAGE Challenge 2. In fact, the heuristic agent performed worse on average than an agent that takes random actions."
+        },
+        {
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": ""
         }
     ]
 }

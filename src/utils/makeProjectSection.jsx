@@ -120,6 +120,10 @@ export function ProjectSection(index, type, classes, altText, value) {
             retVal = SvgImg(value)
             break
         }
+        case 'img': {
+            retVal = SvgImg(value)
+            break
+        }
     }
 
     if (!classes.length) {

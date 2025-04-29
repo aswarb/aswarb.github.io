@@ -71,7 +71,7 @@
         },
         {
             "type": "reddit-embed",
-            "classes": [ "reddit-embed", "paragraph"],
+            "classes": ["reddit-embed", "paragraph"],
             "altText": "",
             "value": "https://www.reddit.com/r/unixporn/comments/n13r71/"
         },
@@ -87,7 +87,7 @@
             "altText": "",
             "value": "I recall the first version used the curses library for python to update the visible area with frames. Each frame wasn't generated like about - the actual conversion remains the same, but each frame at the time was generated before the video would play. This lead to a long wait, and two fundamental limitations. 1. The converted video could not be larger than the available memory in the system, and 2. The curses player did not appear to smoothly refresh at all framerates in all terminals, leading to a rolling effect as the page refreshed and the characters were updated."
         },
- {
+        {
             "type": "plaintext",
             "classes": ["paragraph"],
             "altText": "",

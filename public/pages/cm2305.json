@@ -12,10 +12,41 @@
     "links": {},
     "sections": [
         {
-            "type": "plaintext",
-            "classes": [],
+            "type": "heading-1",
+            "classes": ["paragraph"],
             "altText": "",
-            "value": "Placeholder text"
+            "value": "The Brief"
+        },
+        {
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "This was a task given as part of the CM2305 module at Cardiff University, for the academic year 22/23. The brief given was a system by which a user can track their location and automatically inform emergency services if the user is detected as being in-trouble. My group decided it would be the best approach to utilise mobile phones as people carry them daily anyway. We decided to use Java to make an Android application, since we were taught Java that year anyway, with other technologies that we had either been taught as part of the degree or in previous experience (flask for a web server, mongoDB for a user database)"
+        },{
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "My role in the project for the autumn semester revolved mainly around <ol><li> designing the interface alongside other students, iterating on each other's designs</li><li> Figuring out the android portion of the project so the group could hit the ground running with a working Google Map using the Google Maps SDK for Android. <ul> <li>This occurred while the rest of the architecture and project was still being planned since we were certain we wanted to at least use the Maps SDK</li></ul>  </li></ol>. My experience with this meant that by the time the spring semester came around I was the most experienced with Android development, and was chosen to be the leader of a sub-team focused on the Android application"
+        },
+{
+            "type": "heading-1",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "The Result"
+        },
+        {
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "Below is the video recorded for the demonstration of the end result. This demonstrates features of the app, including: <ul> <li>Queries to Geocoding, Reverse-Geocoding, and Routes APIs through requests to the web server</li><li>User login and preference saving</li><li>Active route tracking</li><li>False pin to automatically send an sms to the chosen contact in case of danger</li><li>Deviation from chosen route detection.</li></ul> This was done on a simulated android phone, with the https queries being made through the loopback address to the host machine's localhost in order to show the active server logs for the purposes of demonstration."
+	    
+        },
+{
+            "type": "plaintext",
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "It should be noted that the app doesn't actually contact the emergency services by itself in this demonstration, but instead a user-defined emergency contact. This is because we wanted to enable the user to choose who to contact. The user could still contact emergency services in our country through the emergencySMS service."
+	    
         },
         {
             "type": "yt-embed",
@@ -25,7 +56,14 @@
         },
         {
             "type": "plaintext",
-            "classes": [],
+            "classes": ["paragraph"],
+            "altText": "",
+            "value": "My personal grade, calculated based on contribution as logged weekly and assessed separately from overall group performance, came to 86% for this project."
+	    
+        },
+        {
+            "type": "plaintext",
+            "classes": ["paragraph"],
             "altText": "",
             "value": "Placeholder text"
         }
