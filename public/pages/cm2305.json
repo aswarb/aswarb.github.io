@@ -60,12 +60,6 @@
             "altText": "",
             "value": "My personal grade, calculated based on contribution as logged weekly and assessed separately from overall group performance, came to 86% for this project."
 	    
-        },
-        {
-            "type": "plaintext",
-            "classes": ["paragraph"],
-            "altText": "",
-            "value": "Placeholder text"
         }
     ]
 }
