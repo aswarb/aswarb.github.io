@@ -26,7 +26,7 @@
             "type": "plaintext",
             "classes": ["paragraph"],
             "altText": "",
-            "value": "My role in the project for the autumn semester revolved mainly around <ol><li> designing the interface alongside other students, iterating on each other's designs</li><li> Figuring out the android portion of the project so the group could hit the ground running with a working Google Map using the Google Maps SDK for Android. <ul> <li>This occurred while the rest of the architecture and project was still being planned since we were certain we wanted to at least use the Maps SDK</li></ul>  </li></ol>. My experience with this meant that by the time the spring semester came around I was the most experienced with Android development, and was chosen to be the leader of a sub-team focused on the Android application"
+            "value": "My role in the project for the autumn semester revolved mainly around <ol><li> designing the interface alongside other students, iterating on each other's designs</li><li> Figuring out the android portion of the project so the group could hit the ground running with a working Google Map using the Google Maps SDK for Android. <ul> <li>This occurred while the rest of the architecture and project was still being planned since we were certain we wanted to at least use the Maps SDK</li></ul>  </li></ol> My experience with this meant that by the time the spring semester came around I was the most experienced with Android development, and was chosen to be the leader of a sub-team focused on the Android application"
         },
 {
             "type": "heading-1",
